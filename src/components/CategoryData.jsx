@@ -11,27 +11,27 @@ export const CategoryData = [
 		text: 'Skin Care',
 	},
 	{
-		id: 1,
+		id: 2,
 		image: laptop,
 		text: 'Laptop & PC',
 	},
 	{
-		id: 1,
+		id: 3,
 		image: phone,
 		text: 'Smarphone',
 	},
 	{
-		id: 1,
+		id: 4,
 		image: fashion,
 		text: 'Fashion',
 	},
 	{
-		id: 1,
+		id: 5,
 		image: sepatu,
 		text: 'Sepatu',
 	},
 	{
-		id: 1,
+		id: 6,
 		image: elektronik,
 		text: 'Elektronik',
 	},

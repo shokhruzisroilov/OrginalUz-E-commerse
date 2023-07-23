@@ -16,9 +16,9 @@ import sliderImage2 from '../assets/slider2.jpg'
 import sliderImage3 from '../assets/slider3.jpg'
 import sliderImage4 from '../assets/slider4.jpg'
 
-export default function Carousel() {
+export default 	function Carousel() {
 	return (
-		<>
+		<div className='md:max-w-[1700px] md:px-20 sm:px-10 m-auto'>
 			<Swiper
 				spaceBetween={30}
 				centeredSlides={true}
@@ -46,6 +46,6 @@ export default function Carousel() {
 					<img src={sliderImage4} alt='' className={`${styles.sliderImage}`} />
 				</SwiperSlide>
 			</Swiper>
-		</>
+		</div>
 	)
 }

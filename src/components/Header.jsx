@@ -1,23 +1,30 @@
 import { styles } from '../util/style'
 import { NavLink, Link } from 'react-router-dom'
 import payBox from '../assets/svg/pay-box.svg'
-
+import humburger from '../assets/svg/bars-solid.svg'
+import colseMenu from '../assets/svg/close-menu.svg'
 import { useState } from 'react'
 
 function Header() {
+	const [burger, setBurger] = useState(true)
+
+	const handleClick = () => {
+		setBurger(!burger)
+	}
+
 	const clazz = `${styles.styleNav}`
 	const activeClazz = `${styles.styleNavActive}`
 	return (
 		<header className='w-full bg-white shadow-shadowHead'>
 			<div
-				className={`${styles.container} py-3 flex justify-between items-center`}
+				className={`${styles.container} py-4 flex justify-between items-center`}
 			>
 				<div>
-					<h2 className='text-textColor text-[20px] leadin-normal font-[400]'>
-						OrginalUz
-					</h2>
+					<span className='self-center text-textColor text-xl sm:text-2xl font-semibold whitespace-nowrap'>
+						Orginal Uz
+					</span>
 				</div>
-				<nav>
+				<nav className='hidden sm:block'>
 					<ul className='flex items-center gap-x-5'>
 						<li>
 							<NavLink
@@ -48,7 +55,7 @@ function Header() {
 						</li>
 					</ul>
 				</nav>
-				<div className='flex gap-x-[10px]'>
+				<div className='hidden sm:flex gap-x-[10px]'>
 					<Link to='/signIn' className={`${styles.btnSecondary} ${styles.btn}`}>
 						Sign In
 					</Link>
@@ -56,7 +63,60 @@ function Header() {
 						Login
 					</Link>
 				</div>
+				<div className=' sm:hidden' onClick={handleClick}>
+					{burger ? (
+						<img src={humburger} alt='humburger-image' className='w-6 h-6' />
+					) : (
+						<img src={colseMenu} alt='humburger-image' className='w-6 h-6' />
+					)}
+				</div>
 			</div>
+			{!burger ? (
+				<div className='flex flex-col gap-4 py-3'>
+					<ul className='flex items-center justify-center gap-x-5'>
+						<li>
+							<NavLink
+								to='/'
+								className={({ isActive }) => (isActive ? activeClazz : clazz)}
+							>
+								Home
+							</NavLink>
+						</li>
+						<li>
+							<NavLink
+								to='/'
+								className={({ isActive }) => (isActive ? activeClazz : clazz)}
+							>
+								Category
+							</NavLink>
+						</li>
+						<li>
+							<NavLink
+								to='/'
+								className={({ isActive }) => (isActive ? activeClazz : clazz)}
+							>
+								Product
+							</NavLink>
+						</li>
+						<li>
+							<img src={payBox} alt='pay box' />
+						</li>
+					</ul>
+					<div className='flex justify-center gap-x-[10px]'>
+						<Link
+							to='/signIn'
+							className={`${styles.btnSecondary} ${styles.btn}`}
+						>
+							Sign In
+						</Link>
+						<Link to='/login' className={`${styles.btnPrimary} ${styles.btn}`}>
+							Login
+						</Link>
+					</div>
+				</div>
+			) : (
+				[]
+			)}
 		</header>
 	)
 }

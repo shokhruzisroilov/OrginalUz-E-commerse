@@ -2,7 +2,7 @@ import { styles } from '../util/style'
 import serviceProducts from '../service/ServiceProducts'
 import { useState, useEffect } from 'react'
 
-import { Carousel, Category, AllProducts } from '../index'
+import { Carousel, Category, AllProducts,Footer } from '../index'
 
 function HomePage() {
 	const [productData, setProductData] = useState([])
@@ -22,10 +22,11 @@ function HomePage() {
 
 	return (
 		<main className='w-full bg-mainBg'>
-			<div className={`${styles.container} `}>
+			<div>
 				<Carousel />
 				<Category />
 				<AllProducts />
+				<Footer />
 			</div>
 		</main>
 	)
