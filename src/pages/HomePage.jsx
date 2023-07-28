@@ -2,7 +2,7 @@ import { styles } from '../util/style'
 import serviceProducts from '../service/ServiceProducts'
 import { useState, useEffect } from 'react'
 
-import { Carousel, Category, AllProducts,Footer } from '../index'
+import { Carousel, Category, AllProducts,Footer, AddToCart} from '../index'
 
 function HomePage() {
 	const [productData, setProductData] = useState([])
@@ -27,6 +27,7 @@ function HomePage() {
 				<Category />
 				<AllProducts />
 				<Footer />
+				<AddToCart />
 			</div>
 		</main>
 	)

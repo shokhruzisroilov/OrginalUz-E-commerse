@@ -15,9 +15,9 @@ function Header() {
 	const clazz = `${styles.styleNav}`
 	const activeClazz = `${styles.styleNavActive}`
 	return (
-		<header className='w-full bg-white shadow-shadowHead'>
+		<header className='w-full bg-white shadow-shadowHead fixed top-0 z-10'>
 			<div
-				className={`${styles.container} py-4 flex justify-between items-center`}
+				className={`${styles.container} h-[75px] flex justify-between items-center`}
 			>
 				<div>
 					<span className='self-center text-textColor text-xl sm:text-2xl font-semibold whitespace-nowrap'>
@@ -36,7 +36,7 @@ function Header() {
 						</li>
 						<li>
 							<NavLink
-								to='/'
+								to='/category'
 								className={({ isActive }) => (isActive ? activeClazz : clazz)}
 							>
 								Category
@@ -44,7 +44,7 @@ function Header() {
 						</li>
 						<li>
 							<NavLink
-								to='/'
+								to='/product'
 								className={({ isActive }) => (isActive ? activeClazz : clazz)}
 							>
 								Product
@@ -72,7 +72,7 @@ function Header() {
 				</div>
 			</div>
 			{!burger ? (
-				<div className='flex flex-col gap-4 py-3'>
+				<div className='bg-white flex flex-col gap-10 py-6 sidebar'>
 					<ul className='flex items-center justify-center gap-x-5'>
 						<li>
 							<NavLink

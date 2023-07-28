@@ -11,8 +11,8 @@ import 'swiper/css/pagination'
 
 function Category() {
 	return (
-		<div className={`pt-10 ${styles.container}`}>
-			<button className={`${styles.btnPrimary} px-6 py-[10px]`}>
+		<div className={`pt-10 md:max-w-[1700px] md:px-20 sm:px-10 m-auto`}>
+			<button className={`${styles.btnPrimary} sl:mx-5 sm:mx-0 px-6 py-[10px]`}>
 				Product Category
 			</button>
 			<div className='pt-5 flex justify-center'>
@@ -23,17 +23,21 @@ function Category() {
 						clickable: true,
 					}}
 					breakpoints={{
-						480: {
+						320: {
 							slidesPerView: 2,
 							spaceBetween: 20,
 						},
-						620: {
+						480: {
 							slidesPerView: 3,
 							spaceBetween: 20,
 						},
-						768: {
+						620: {
 							slidesPerView: 4,
 							spaceBetween: 40,
+						},
+						768: {
+							slidesPerView: 5,
+							spaceBetween: 50,
 						},
 						1060: {
 							slidesPerView: 6,
