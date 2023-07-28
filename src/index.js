@@ -10,6 +10,7 @@ import AllProducts from './components/AllProducts'
 import Footer from './components/Footer'
 import ShopingCart from './pages/ShopingCart'
 import AddToCart from './components/AddToCart'
+import Slider from './components/Slider'
 
 export {
 	Layouts,
@@ -24,4 +25,5 @@ export {
 	AllProducts,
 	Footer,
 	AddToCart,
+	Slider,
 }

@@ -1,6 +1,6 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-// import { Close } from 'react-icons';
+import closeIcon from "../assets/svg/close-menu.svg"
 
 const products = [
 	{
@@ -55,7 +55,7 @@ const products = [
 ]
 
 export default function AddToCart() {
-	const [open, setOpen] = useState(true)
+	const [open, setOpen] = useState(false)
 
 	return (
 		<Transition.Root show={open} as={Fragment}>
@@ -98,7 +98,12 @@ export default function AddToCart() {
 														onClick={() => setOpen(false)}
 													>
 														<span className='sr-only'>Close panel</span>
-														{/* <Close className='h-6 w-6' aria-hidden='true' /> */}
+														<img
+															src={closeIcon}
+															alt='close icon'
+															className='h-6 w-6'
+															aria-hidden='true'
+														/>
 													</button>
 												</div>
 											</div>

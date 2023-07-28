@@ -99,7 +99,7 @@ function Header() {
 							</NavLink>
 						</li>
 						<li>
-							<img src={payBox} alt='pay box' />
+							{/* <img src={payBox} alt='pay box' onClick={shopingClick} /> */}
 						</li>
 					</ul>
 					<div className='flex justify-center gap-x-[10px]'>
