@@ -1,12 +1,10 @@
-import { styles } from '../../util/style'
-
-import { Link } from 'react-router-dom'
-import { Navbar } from './Navbar'
-
-import humburger from '../../assets/svg/bars-solid.svg'
-import colseMenu from '../../assets/svg/close-menu.svg'
-
 import { useState } from 'react'
+
+import { styles } from '../util/style'
+import { Link } from 'react-router-dom'
+import { Navbar } from './ui/Navbar'
+
+import { humburger, colseMenu } from '../constants/index'
 
 function Header() {
 	const [burger, setBurger] = useState(true)
@@ -34,7 +32,7 @@ function Header() {
 				</nav>
 				<div className='hidden sm:flex gap-x-[10px]'>
 					<Link to='/signIn' className={`${styles.btnSecondary} ${styles.btn}`}>
-						Sign In
+						Sign up
 					</Link>
 					<Link to='/login' className={`${styles.btnPrimary} ${styles.btn}`}>
 						Login
@@ -58,7 +56,7 @@ function Header() {
 							to='/signIn'
 							className={`${styles.btnSecondary} ${styles.btn}`}
 						>
-							Sign In
+							Sign up
 						</Link>
 						<Link to='/login' className={`${styles.btnPrimary} ${styles.btn}`}>
 							Login

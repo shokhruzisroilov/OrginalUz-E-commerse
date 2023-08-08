@@ -1,9 +1,9 @@
 import { Fragment } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Dialog, Transition } from '@headlessui/react'
-import { handelClick } from '../app/features/state/shopingSlice'
 import { Link } from 'react-router-dom'
-import closeIcon from '../assets/svg/close-menu.svg'
+import { handelClick } from '../app/features/state/shopingSlice'
+import closeMenu from '../assets/svg/close-menu.svg'
 
 const products = [
 	{
@@ -58,11 +58,16 @@ const products = [
 ]
 
 export default function AddToCart() {
-	const shoping  = useSelector((state) => state.shoping.active)
+	const shoping = useSelector(state => state.shoping.active)
 	const dispatch = useDispatch()
 	return (
 		<Transition.Root show={shoping} as={Fragment}>
-			<Dialog as='div' className='relative z-10' onClose={dispatch} onClick={() => dispatch(handelClick())}>
+			<Dialog
+				as='div'
+				className='relative z-10'
+				onClose={dispatch}
+				onClick={() => dispatch(handelClick())}
+			>
 				<Transition.Child
 					as={Fragment}
 					enter='ease-in-out duration-500'
@@ -102,7 +107,7 @@ export default function AddToCart() {
 													>
 														<span className='sr-only'>Close panel</span>
 														<img
-															src={closeIcon}
+															src={closeMenu}
 															alt='close icon'
 															className='h-6 w-6'
 															aria-hidden='true'
@@ -182,7 +187,8 @@ export default function AddToCart() {
 											<div className='mt-6 flex justify-center text-center text-sm text-gray-500'>
 												<p>
 													or
-													<Link to='/'
+													<Link
+														to='/'
 														type='button'
 														className='font-medium text-orange-500 hover:text-orange-400'
 														onClick={() => dispatch(handelClick())}

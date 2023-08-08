@@ -1,4 +1,3 @@
-import React, { useRef, useState } from 'react'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
 
@@ -12,7 +11,7 @@ import 'swiper/css/pagination'
 // import required modules
 import { Zoom, Navigation, Pagination } from 'swiper/modules'
 
-import laptop from '../assets/simple.png'
+import { laptop } from '../constants/index'
 
 export default function Slider() {
 	return (

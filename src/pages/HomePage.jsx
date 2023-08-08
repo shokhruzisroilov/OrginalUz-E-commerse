@@ -1,11 +1,12 @@
-import { styles } from '../util/style'
-import serviceProducts from '../service/ServiceProducts'
-import { useState, useEffect } from 'react'
-
-import { Carousel, AllProducts, AddToCart, Category, Footer} from '../index'
+import {
+	Carousel,
+	Category,
+	AllProducts,
+	Footer,
+	AddToCart,
+} from '../components/index'
 
 function HomePage() {
-
 	return (
 		<main className='w-full bg-mainBg'>
 			<div>
@@ -18,5 +19,4 @@ function HomePage() {
 		</main>
 	)
 }
-
 export default HomePage

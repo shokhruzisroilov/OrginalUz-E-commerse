@@ -18,17 +18,31 @@ export function Navbar({ handleClick }) {
 				</NavLink>
 			</li>
 			<li>
-				<NavLink to='/#category' className={`${clazz}`} smooth onClick={handleClick}>
+				<NavLink
+					to='/#category'
+					className={`${clazz}`}
+					smooth
+					onClick={handleClick}
+				>
 					Category
 				</NavLink>
 			</li>
 			<li>
-				<NavLink to='/#product' className={`${clazz}`} smooth onClick={handleClick}>
+				<NavLink
+					to='/#product'
+					className={`${clazz}`}
+					smooth
+					onClick={handleClick}
+				>
 					Product
 				</NavLink>
 			</li>
-			<li>
-				<img src={payBox} alt='pay box' onClick={() => dispatch(handelClick())}/>
+			<li onClick={handleClick}>
+				<img
+					src={payBox}
+					alt='pay box'
+					onClick={() => dispatch(handelClick())}
+				/>
 			</li>
 		</>
 	)

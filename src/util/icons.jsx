@@ -1,5 +1,4 @@
 // Icon Svg
-import React from 'react'
 
 export const MacPlay = () => {
 	return (

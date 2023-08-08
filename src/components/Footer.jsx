@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom'
 import { styles } from '../util/style'
-import logo from '../assets/logo.uz.png'
+import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link'
+import { logo } from '../constants/index'
 
 import {
 	MacPlay,
@@ -44,7 +44,7 @@ function Footer() {
 										<div className='-mt-1 font-sans text-sm font-semibold'>
 											Mac App Store
 										</div>
-									</div>	
+									</div>
 								</Link>
 								<Link
 									to='/'

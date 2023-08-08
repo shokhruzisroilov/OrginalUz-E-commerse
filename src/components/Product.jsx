@@ -1,14 +1,12 @@
-import { Link } from 'react-router-dom'
-import laptop from '../assets/simple.png'
-import bagBuy from '../assets/svg/bag-plus.svg'
 import { styles } from '../util/style'
+import { Link } from 'react-router-dom'
+import {laptop, bagBuy} from '../constants/index'
 
 function Product() {
 	return (
 		<Link to='/shoping'>
 			<div
 				className='bg-white p-[10px] cursor-pointer shadow-shadowProduct'
-				
 			>
 				<img
 					src={laptop}

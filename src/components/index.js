@@ -1,0 +1,6 @@
+export { default as Header } from './Header'
+export { default as Carousel } from './Carousel'
+export { default as Category } from './Category'
+export { default as AllProducts } from './AllProducts'
+export { default as Footer } from './Footer'
+export { default as AddToCart } from './AddToCart'
