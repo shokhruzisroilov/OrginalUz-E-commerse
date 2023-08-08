@@ -1,6 +1,9 @@
-import { Fragment, useState } from 'react'
+import { Fragment } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { Dialog, Transition } from '@headlessui/react'
-import closeIcon from "../assets/svg/close-menu.svg"
+import { handelClick } from '../app/features/state/shopingSlice'
+import { Link } from 'react-router-dom'
+import closeIcon from '../assets/svg/close-menu.svg'
 
 const products = [
 	{
@@ -55,11 +58,11 @@ const products = [
 ]
 
 export default function AddToCart() {
-	const [open, setOpen] = useState(false)
-
+	const shoping  = useSelector((state) => state.shoping.active)
+	const dispatch = useDispatch()
 	return (
-		<Transition.Root show={open} as={Fragment}>
-			<Dialog as='div' className='relative z-10' onClose={setOpen}>
+		<Transition.Root show={shoping} as={Fragment}>
+			<Dialog as='div' className='relative z-10' onClose={dispatch} onClick={() => dispatch(handelClick())}>
 				<Transition.Child
 					as={Fragment}
 					enter='ease-in-out duration-500'
@@ -95,7 +98,7 @@ export default function AddToCart() {
 													<button
 														type='button'
 														className='-m-2 p-2 text-gray-400 hover:text-gray-500'
-														onClick={() => setOpen(false)}
+														onClick={() => dispatch(handelClick())}
 													>
 														<span className='sr-only'>Close panel</span>
 														<img
@@ -128,9 +131,9 @@ export default function AddToCart() {
 																	<div>
 																		<div className='flex justify-between text-base font-medium text-gray-900'>
 																			<h3>
-																				<a href={product.href}>
+																				<Link to={product.href}>
 																					{product.name}
-																				</a>
+																				</Link>
 																			</h3>
 																			<p className='ml-4'>{product.price}</p>
 																		</div>
@@ -169,24 +172,24 @@ export default function AddToCart() {
 												Shipping and taxes calculated at checkout.
 											</p>
 											<div className='mt-6'>
-												<a
-													href='#'
+												<Link
+													to='/'
 													className='flex items-center justify-center rounded-md border border-transparent bg-orange-400 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-orange-300'
 												>
 													Checkout
-												</a>
+												</Link>
 											</div>
 											<div className='mt-6 flex justify-center text-center text-sm text-gray-500'>
 												<p>
 													or
-													<button
+													<Link to='/'
 														type='button'
 														className='font-medium text-orange-500 hover:text-orange-400'
-														onClick={() => setOpen(false)}
+														onClick={() => dispatch(handelClick())}
 													>
 														Continue Shopping
 														<span aria-hidden='true'> &rarr;</span>
-													</button>
+													</Link>
 												</p>
 											</div>
 										</div>

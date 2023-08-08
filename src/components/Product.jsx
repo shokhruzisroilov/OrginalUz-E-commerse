@@ -6,7 +6,10 @@ import { styles } from '../util/style'
 function Product() {
 	return (
 		<Link to='/shoping'>
-			<div className='bg-white p-[10px] cursor-pointer shadow-shadowProduct'>
+			<div
+				className='bg-white p-[10px] cursor-pointer shadow-shadowProduct'
+				
+			>
 				<img
 					src={laptop}
 					alt='laptop products'

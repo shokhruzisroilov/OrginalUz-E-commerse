@@ -1,9 +1,10 @@
-import skin from '../assets/png/skin.png'
-import laptop from '../assets/png/laptop.png'
-import phone from '../assets/png/phone.png'
-import fashion from '../assets/png/fashion.png'
-import sepatu from '../assets/png/sepatu.png'
-import elektronik from '../assets/png/elektronik.png'
+import skin from '../../assets/png/skin.png'
+import laptop from '../../assets/png/laptop.png'
+import phone from '../../assets/png/phone.png'
+import fashion from '../../assets/png/fashion.png'
+import sepatu from '../../assets/png/sepatu.png'
+import elektronik from '../../assets/png/elektronik.png'
+
 export const CategoryData = [
 	{
 		id: 1,

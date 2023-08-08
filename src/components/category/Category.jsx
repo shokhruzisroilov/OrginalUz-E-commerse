@@ -1,7 +1,7 @@
-import { styles } from '../util/style'
+import { styles } from '../../util/style'
 import { CategoryData } from './CategoryData'
+import { HashLink } from 'react-router-hash-link'
 //slider
-import React, { useRef, useState } from 'react'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
 // Import Swiper styles
@@ -11,10 +11,17 @@ import 'swiper/css/pagination'
 
 function Category() {
 	return (
-		<div className={`pt-10 md:max-w-[1700px] md:px-20 sm:px-10 m-auto`}>
-			<button className={`${styles.btnPrimary} sl:mx-5 sm:mx-0 px-6 py-[10px]`}>
-				Product Category
-			</button>
+		<div
+			className={`pt-10 md:max-w-[1700px] md:px-20 sm:px-10 m-auto`}
+			id='category'
+		>
+			<HashLink to='#category'>
+				<button
+					className={`${styles.btnPrimary} sl:mx-5 sm:mx-0 px-6 py-[10px]`}
+				>
+					Product Category
+				</button>
+			</HashLink>
 			<div className='pt-5 flex justify-center'>
 				<Swiper
 					slidesPerView={1}
@@ -44,12 +51,12 @@ function Category() {
 							spaceBetween: 50,
 						},
 					}}
-					className='mySwiper	'
+					className='mySwiper'
 				>
-					{CategoryData.map(item => {
-						return (
-							<React.Fragment key={item.id}>
-								<SwiperSlide className='flex justify-center'>
+					{CategoryData &&
+						CategoryData.map(item => {
+							return (
+								<SwiperSlide className='flex justify-center' key={item.id}>
 									<div className='bg-white max-w-[244px] min-h-max cursor-pointer'>
 										<img
 											src={item.image}
@@ -61,9 +68,8 @@ function Category() {
 										</button>
 									</div>
 								</SwiperSlide>
-							</React.Fragment>
-						)
-					})}
+							)
+						})}
 				</Swiper>
 			</div>
 		</div>

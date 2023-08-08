@@ -1,5 +1,5 @@
 class ServiceProducts {
-	baseUrl = 'https://jsonplaceholder.typicode.com/'
+	baseUrl = 'http://orginaluz.onrender.com/'
 	getData = async api => {
 		let res = fetch(`${this.baseUrl}${api}`)
 		if (res.ok) {
@@ -8,7 +8,7 @@ class ServiceProducts {
 		return (await res).json()
 	}
 
-	getProduct = url => {
+	getUser = url => {
 		return this.getData(url)
 	}
 }

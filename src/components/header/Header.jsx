@@ -1,8 +1,11 @@
-import { styles } from '../util/style'
-import { NavLink, Link } from 'react-router-dom'
-import payBox from '../assets/svg/pay-box.svg'
-import humburger from '../assets/svg/bars-solid.svg'
-import colseMenu from '../assets/svg/close-menu.svg'
+import { styles } from '../../util/style'
+
+import { Link } from 'react-router-dom'
+import { Navbar } from './Navbar'
+
+import humburger from '../../assets/svg/bars-solid.svg'
+import colseMenu from '../../assets/svg/close-menu.svg'
+
 import { useState } from 'react'
 
 function Header() {
@@ -21,38 +24,12 @@ function Header() {
 			>
 				<div>
 					<span className='self-center text-textColor text-xl sm:text-2xl font-semibold whitespace-nowrap'>
-						Orginal Uz
+						<Link to='/'>Orginal Uz</Link>
 					</span>
 				</div>
 				<nav className='hidden sm:block'>
 					<ul className='flex items-center gap-x-5'>
-						<li>
-							<NavLink
-								to='/'
-								className={({ isActive }) => (isActive ? activeClazz : clazz)}
-							>
-								Home
-							</NavLink>
-						</li>
-						<li>
-							<NavLink
-								to='/category'
-								className={({ isActive }) => (isActive ? activeClazz : clazz)}
-							>
-								Category
-							</NavLink>
-						</li>
-						<li>
-							<NavLink
-								to='/product'
-								className={({ isActive }) => (isActive ? activeClazz : clazz)}
-							>
-								Product
-							</NavLink>
-						</li>
-						<li>
-							<img src={payBox} alt='pay box' />
-						</li>
+						<Navbar />
 					</ul>
 				</nav>
 				<div className='hidden sm:flex gap-x-[10px]'>
@@ -74,33 +51,7 @@ function Header() {
 			{!burger ? (
 				<div className='bg-white flex flex-col gap-10 py-6 sidebar'>
 					<ul className='flex items-center justify-center gap-x-5'>
-						<li>
-							<NavLink
-								to='/'
-								className={({ isActive }) => (isActive ? activeClazz : clazz)}
-							>
-								Home
-							</NavLink>
-						</li>
-						<li>
-							<NavLink
-								to='/'
-								className={({ isActive }) => (isActive ? activeClazz : clazz)}
-							>
-								Category
-							</NavLink>
-						</li>
-						<li>
-							<NavLink
-								to='/'
-								className={({ isActive }) => (isActive ? activeClazz : clazz)}
-							>
-								Product
-							</NavLink>
-						</li>
-						<li>
-							{/* <img src={payBox} alt='pay box' onClick={shopingClick} /> */}
-						</li>
+						<Navbar handleClick={handleClick} />
 					</ul>
 					<div className='flex justify-center gap-x-[10px]'>
 						<Link
