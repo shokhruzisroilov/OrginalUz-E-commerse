@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { styles } from '../util/style'
 import { Link } from 'react-router-dom'
-import { Navbar } from './ui/Navbar'
+import { Navbar } from '../components/index'
 
 import { humburger, colseMenu } from '../constants/index'
 
@@ -31,8 +31,11 @@ function Header() {
 					</ul>
 				</nav>
 				<div className='hidden sm:flex gap-x-[10px]'>
-					<Link to='/signIn' className={`${styles.btnSecondary} ${styles.btn}`}>
-						Sign up
+					<Link
+						to='/register'
+						className={`${styles.btnSecondary} ${styles.btn}`}
+					>
+						Register
 					</Link>
 					<Link to='/login' className={`${styles.btnPrimary} ${styles.btn}`}>
 						Login
@@ -53,10 +56,10 @@ function Header() {
 					</ul>
 					<div className='flex justify-center gap-x-[10px]'>
 						<Link
-							to='/signIn'
+							to='/register'
 							className={`${styles.btnSecondary} ${styles.btn}`}
 						>
-							Sign up
+							Register
 						</Link>
 						<Link to='/login' className={`${styles.btnPrimary} ${styles.btn}`}>
 							Login

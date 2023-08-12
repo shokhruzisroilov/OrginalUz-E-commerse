@@ -5,7 +5,7 @@ import { handelClick } from '../../app/features/state/shopingSlice'
 
 import payBox from '../../assets/svg/pay-box.svg'
 
-export function Navbar({ handleClick }) {
+function Navbar({ handleClick }) {
 	const dispatch = useDispatch()
 
 	const clazz = `${styles.styleNav}`
@@ -21,7 +21,6 @@ export function Navbar({ handleClick }) {
 				<NavLink
 					to='/#category'
 					className={`${clazz}`}
-					smooth
 					onClick={handleClick}
 				>
 					Category
@@ -31,7 +30,6 @@ export function Navbar({ handleClick }) {
 				<NavLink
 					to='/#product'
 					className={`${clazz}`}
-					smooth
 					onClick={handleClick}
 				>
 					Product
@@ -47,3 +45,5 @@ export function Navbar({ handleClick }) {
 		</>
 	)
 }
+
+export default Navbar
