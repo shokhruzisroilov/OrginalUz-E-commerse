@@ -23,7 +23,7 @@ function Navbar() {
 					return (
 						<li key={item.id}>
 							<NavLink
-								to={`/#${active}`}
+								to={`/#${item.id}`}
 								className={active === item.id ? activeClazz : clazz}
 								onClick={() => activeHandler(item.id)}
 							>
@@ -32,7 +32,7 @@ function Navbar() {
 						</li>
 					)
 				})}
-			<li>
+			<li onClick={handelClick}>
 				<img
 					src={payBox}
 					alt='pay box'

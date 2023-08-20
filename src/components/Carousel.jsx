@@ -16,7 +16,7 @@ import sliderImage4 from '../assets/images/slider4.jpg'
 
 export default 	function Carousel() {
 	return (
-		<div className='pt-[75px] md:max-w-[1700px] md:px-20 sm:px-10 m-auto'>
+		<div className='pt-[75px] md:max-w-[1700px] md:px-20 sm:px-10 m-auto' id='home'>
 			<Swiper
 				spaceBetween={30}
 				centeredSlides={true}
