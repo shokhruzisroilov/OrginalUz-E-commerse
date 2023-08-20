@@ -52,7 +52,7 @@ function Header() {
 			{!burger ? (
 				<div className='bg-white flex flex-col gap-10 py-6 sidebar'>
 					<ul className='flex items-center justify-center gap-x-5'>
-						<Navbar handleClick={handleClick} />
+						<Navbar/>
 					</ul>
 					<div className='flex justify-center gap-x-[10px]'>
 						<Link
@@ -66,9 +66,7 @@ function Header() {
 						</Link>
 					</div>
 				</div>
-			) : (
-				[]
-			)}
+			) : null}
 		</header>
 	)
 }

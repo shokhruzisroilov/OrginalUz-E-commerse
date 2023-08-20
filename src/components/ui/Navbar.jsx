@@ -6,10 +6,10 @@ import payBox from '../../assets/svg/pay-box.svg'
 import { navbarLinks } from '../../constants/navbarLinks'
 import { useState } from 'react'
 
-function Navbar({ handleClick }) {
+function Navbar() {
 	const [active, setActive] = useState('home')
 
-	const activeHandler= (id) => {
+	const activeHandler = id => {
 		setActive(id)
 	}
 
@@ -18,20 +18,20 @@ function Navbar({ handleClick }) {
 	const activeClazz = `${styles.styleNavActive}`
 	return (
 		<>
-			{navbarLinks.map(item => {
-				return (
-					<li onClick={() => activeHandler(item.id)}>
-						<NavLink
-							to={`/#${item.id}`}
-							className={active === item.id ? activeClazz : clazz}
-							smooth
-							onClick={handleClick}
-						>
-							{item.title}
-						</NavLink>
-					</li>
-				)
-			})}
+			{navbarLinks &&
+				navbarLinks.map(item => {
+					return (
+						<li key={item.id}>
+							<NavLink
+								to={`/#${active}`}
+								className={active === item.id ? activeClazz : clazz}
+								onClick={() => activeHandler(item.id)}
+							>
+								{item.title}
+							</NavLink>
+						</li>
+					)
+				})}
 			<li onClick={handleClick}>
 				<img
 					src={payBox}
