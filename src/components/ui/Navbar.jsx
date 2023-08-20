@@ -2,39 +2,36 @@ import { styles } from '../../util/style'
 import { NavHashLink as NavLink } from 'react-router-hash-link'
 import { useDispatch } from 'react-redux'
 import { handelClick } from '../../app/features/state/shopingSlice'
-
 import payBox from '../../assets/svg/pay-box.svg'
+import { navbarLinks } from '../../constants/navbarLinks'
+import { useState } from 'react'
 
 function Navbar({ handleClick }) {
-	const dispatch = useDispatch()
+	const [active, setActive] = useState('home')
 
+	const activeHandler= (id) => {
+		setActive(id)
+	}
+
+	const dispatch = useDispatch()
 	const clazz = `${styles.styleNav}`
 	const activeClazz = `${styles.styleNavActive}`
 	return (
 		<>
-			<li>
-				<NavLink to='/#top' className={`${clazz}`} smooth onClick={handleClick}>
-					Home
-				</NavLink>
-			</li>
-			<li>
-				<NavLink
-					to='/#category'
-					className={`${clazz}`}
-					onClick={handleClick}
-				>
-					Category
-				</NavLink>
-			</li>
-			<li>
-				<NavLink
-					to='/#product'
-					className={`${clazz}`}
-					onClick={handleClick}
-				>
-					Product
-				</NavLink>
-			</li>
+			{navbarLinks.map(item => {
+				return (
+					<li onClick={() => activeHandler(item.id)}>
+						<NavLink
+							to={`/#${item.id}`}
+							className={active === item.id ? activeClazz : clazz}
+							smooth
+							onClick={handleClick}
+						>
+							{item.title}
+						</NavLink>
+					</li>
+				)
+			})}
 			<li onClick={handleClick}>
 				<img
 					src={payBox}

@@ -1,5 +1,6 @@
 import { styles } from "../util/style"
 import { Link } from "react-router-dom"
+import { AddToCart } from "../components"
 import visa from '../assets/svg/visa.svg'
 import payPal from '../assets/svg/pay-pal.svg'
 import masterCard from '../assets/svg/master-card.svg'
@@ -56,6 +57,7 @@ function ShopingCart() {
 					</div>
 				</div>
 			</div>
+			<AddToCart />
 		</div>
 	)
 }
