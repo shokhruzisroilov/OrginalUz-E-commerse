@@ -32,7 +32,7 @@ function Navbar() {
 						</li>
 					)
 				})}
-			<li onClick={handleClick}>
+			<li>
 				<img
 					src={payBox}
 					alt='pay box'
