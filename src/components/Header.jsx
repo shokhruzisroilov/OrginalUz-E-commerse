@@ -27,7 +27,7 @@ function Header() {
 				</div>
 				<nav className='hidden sm:block'>
 					<ul className='flex items-center gap-x-5'>
-						<Navbar />
+						<Navbar/>
 					</ul>
 				</nav>
 				<div className='hidden sm:flex gap-x-[10px]'>
@@ -52,7 +52,7 @@ function Header() {
 			{!burger ? (
 				<div className='bg-white flex flex-col gap-10 py-6 sidebar'>
 					<ul className='flex items-center justify-center gap-x-5'>
-						<Navbar/>
+						<Navbar handleClick={handleClick}/>
 					</ul>
 					<div className='flex justify-center gap-x-[10px]'>
 						<Link
