@@ -2,7 +2,6 @@ import {
 	Carousel,
 	Category,
 	AllProducts,
-	Footer,
 	AddToCart,
 } from '../components/index'
 
@@ -13,7 +12,6 @@ function HomePage() {
 				<Carousel />
 				<Category />
 				<AllProducts />
-				<Footer />
 				<AddToCart />
 			</div>
 		</main>

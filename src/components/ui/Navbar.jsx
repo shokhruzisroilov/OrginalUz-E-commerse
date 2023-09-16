@@ -1,5 +1,5 @@
 import { styles } from '../../util/style'
-import { NavHashLink as NavLink } from 'react-router-hash-link'
+import { HashLink as Link } from 'react-router-hash-link'
 import { useDispatch } from 'react-redux'
 import { handelClick } from '../../app/features/state/shopingSlice'
 import payBox from '../../assets/svg/pay-box.svg'
@@ -7,10 +7,10 @@ import { navbarLinks } from '../../constants/navbarLinks'
 import { useState } from 'react'
 
 function Navbar({handleClick}) {
-	const [active, setActive] = useState('home')
+	const [activeLink, setActiveLink] = useState('home')
 
 	const activeHandler = id => {
-		setActive(id)
+		setActiveLink(id)
 	}
 
 	const dispatch = useDispatch()
@@ -22,13 +22,13 @@ function Navbar({handleClick}) {
 				navbarLinks.map(item => {
 					return (
 						<li key={item.id} onClick={handleClick}>
-							<NavLink
+							<Link
 								to={`/#${item.id}`}
-								className={active === item.id ? activeClazz : clazz}
+								className={activeLink === item.id ? activeClazz : clazz}
 								onClick={() => activeHandler(item.id)}
 							>
 								{item.title}
-							</NavLink>
+							</Link>
 						</li>
 					)
 				})}

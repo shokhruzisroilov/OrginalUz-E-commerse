@@ -1,6 +1,5 @@
 import { styles } from '../util/style'
-import { Link } from 'react-router-dom'
-import { HashLink } from 'react-router-hash-link'
+import { HashLink as Link } from 'react-router-hash-link'
 import { logo } from '../constants/index'
 
 import {
@@ -34,8 +33,7 @@ function Footer() {
 								</span>
 							</div>
 							<div className='sm:flex-row flex flex-col gap-4 '>
-								<Link
-									to='/'
+								<div
 									className='w-full sm:w-auto bg-orange-500 hover:bg-orange-400 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 '
 								>
 									<MacPlay />
@@ -45,9 +43,8 @@ function Footer() {
 											Mac App Store
 										</div>
 									</div>
-								</Link>
-								<Link
-									to='/'
+								</div>	
+								<div
 									className='w-full sm:w-auto bg-orange-500 hover:bg-orange-400 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 '
 								>
 									<GooglePlay />
@@ -57,7 +54,7 @@ function Footer() {
 											Google Play
 										</div>
 									</div>
-								</Link>
+								</div>
 							</div>
 						</Link>
 					</div>
@@ -68,19 +65,19 @@ function Footer() {
 							</h2>
 							<ul className='text-gray-500 font-medium'>
 								<li className='mb-4'>
-									<HashLink to='/#top' className='hover:underline'>
+									<Link to='/#top' className='hover:underline'>
 										Home
-									</HashLink>
+									</Link>
 								</li>
 								<li className='mb-4'>
-									<HashLink to='/#category' className='hover:underline'>
+									<Link to='/#category' className='hover:underline'>
 										Category
-									</HashLink>
+									</Link>
 								</li>
 								<li className='mb-4'>
-									<HashLink to='/#product' className='hover:underline'>
+									<Link to='/#product' className='hover:underline'>
 										Product
-									</HashLink>
+									</Link>
 								</li>
 							</ul>
 						</div>
