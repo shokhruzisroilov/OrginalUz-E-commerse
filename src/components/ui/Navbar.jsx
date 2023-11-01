@@ -6,7 +6,7 @@ import payBox from '../../assets/svg/pay-box.svg'
 import { navbarLinks } from '../../constants/navbarLinks'
 import { useState } from 'react'
 
-function Navbar({handleClick}) {
+function Navbar({ handleClick }) {
 	const [activeLink, setActiveLink] = useState('home')
 
 	const activeHandler = id => {

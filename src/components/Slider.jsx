@@ -7,13 +7,9 @@ import 'swiper/css/zoom'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-
 // import required modules
 import { Zoom, Navigation, Pagination } from 'swiper/modules'
-
-import { laptop } from '../constants/index'
-
-export default function Slider() {
+export default function Slider({ image }) {
 	return (
 		<>
 			<Swiper
@@ -31,47 +27,47 @@ export default function Slider() {
 			>
 				<SwiperSlide>
 					<div className='swiper-zoom-container'>
-						<img src={laptop} className='w-full object-cover' />
+						<img src={image} className='w-full object-cover' />
 					</div>
 				</SwiperSlide>
 				<SwiperSlide>
 					<div className='swiper-zoom-container'>
-						<img src={laptop} className='w-full object-cover' />
+						<img src={image} className='w-full object-cover' />
 					</div>
 				</SwiperSlide>
 				<SwiperSlide>
 					<div className='swiper-zoom-container'>
-						<img src={laptop} className='w-full object-cover' />
+						<img src={image} className='w-full object-cover' />
 					</div>
 				</SwiperSlide>
 				<SwiperSlide>
 					<div className='swiper-zoom-container'>
-						<img src={laptop} className='w-full object-cover' />
+						<img src={image} className='w-full object-cover' />
 					</div>
 				</SwiperSlide>
 				<SwiperSlide>
 					<div className='swiper-zoom-container'>
-						<img src={laptop} className='w-full object-cover' />
+						<img src={image} className='w-full object-cover' />
 					</div>
 				</SwiperSlide>
 				<SwiperSlide>
 					<div className='swiper-zoom-container'>
-						<img src={laptop} className='w-full object-cover' />
+						<img src={image} className='w-full object-cover' />
 					</div>
 				</SwiperSlide>
 				<SwiperSlide>
 					<div className='swiper-zoom-container'>
-						<img src={laptop} className='w-full object-cover' />
+						<img src={image} className='w-full object-cover' />
 					</div>
 				</SwiperSlide>
 				<SwiperSlide>
 					<div className='swiper-zoom-container'>
-						<img src={laptop} className='w-full object-cover' />
+						<img src={image} className='w-full object-cover' />
 					</div>
 				</SwiperSlide>
 				<SwiperSlide>
 					<div className='swiper-zoom-container'>
-						<img src={laptop} className='w-full object-cover' />
+						<img src={image} className='w-full object-cover' />
 					</div>
 				</SwiperSlide>
 			</Swiper>

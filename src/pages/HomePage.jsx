@@ -1,9 +1,4 @@
-import {
-	Carousel,
-	Category,
-	AllProducts,
-	AddToCart,
-} from '../components/index'
+import { Carousel, Category, AllProducts, AddToCart } from '../components/index'
 
 function HomePage() {
 	return (

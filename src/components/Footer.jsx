@@ -33,9 +33,7 @@ function Footer() {
 								</span>
 							</div>
 							<div className='sm:flex-row flex flex-col gap-4 '>
-								<div
-									className='w-full sm:w-auto bg-orange-500 hover:bg-orange-400 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 '
-								>
+								<div className='w-full sm:w-auto bg-orange-500 hover:bg-orange-400 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 '>
 									<MacPlay />
 									<div className='text-left'>
 										<div className='mb-1 text-xs'>Download on the</div>
@@ -43,10 +41,8 @@ function Footer() {
 											Mac App Store
 										</div>
 									</div>
-								</div>	
-								<div
-									className='w-full sm:w-auto bg-orange-500 hover:bg-orange-400 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 '
-								>
+								</div>
+								<div className='w-full sm:w-auto bg-orange-500 hover:bg-orange-400 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 '>
 									<GooglePlay />
 									<div className='text-left'>
 										<div className='mb-1 text-xs'>Get in on</div>

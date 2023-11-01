@@ -7,7 +7,7 @@ const shopingSlice = createSlice({
 	name: 'shoping',
 	initialState,
 	reducers: {
-		handelClick: (state) => {
+		handelClick: state => {
 			state.active = !state.active
 		},
 	},

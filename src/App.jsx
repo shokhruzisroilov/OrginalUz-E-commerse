@@ -8,14 +8,13 @@ import {
 	Error404Page,
 } from './index'
 
-
 function App() {
 	return (
 		<>
 			<Routes>
 				<Route path='/' element={<Layouts />}>
 					<Route index element={<HomePage />} />
-					<Route path='/shoping' element={<ShopingCart />} />
+					<Route path='/shoping/:postId' element={<ShopingCart />} />
 				</Route>
 				<Route path='/login' element={<Login />} />
 				<Route path='/register' element={<SignUp />} />
