@@ -10,7 +10,7 @@ function AllProducts() {
 				All Products
 			</h2>
 			<Search />
-			<div className='grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 		pt-10'>
+			<div className='grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 pt-10'>
 				{productsData.map(item => {
 					return (
 						<Product

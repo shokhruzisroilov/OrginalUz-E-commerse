@@ -6,6 +6,7 @@ import payPal from '../assets/svg/pay-pal.svg'
 import masterCard from '../assets/svg/master-card.svg'
 import Slider from '../components/Slider'
 import { productsData } from '../util/productsData'
+import { useEffect } from 'react'
 
 function ShopingCart() {
 	let { postId } = useParams()
@@ -16,13 +17,41 @@ function ShopingCart() {
 		}
 	})
 
+	const ScrollToTop = () => {
+		useEffect(() => {
+			window.scrollTo(0, 0)
+		}, [])
+
+		return null
+	}
+
 	return (
 		dataFilter &&
 		dataFilter.map((item, id) => {
 			return (
 				<div className='w-full my-[75px] bg-mainBg' key={item.id}>
+					<ScrollToTop />
+					<div className={`${styles.container} pt-4 flex items-start`}>
+						<Link to='/' className='flex items-center gap-x-2'>
+							<svg
+								xmlns='http://www.w3.org/2000/svg'
+								width='16'
+								height='16'
+								fill='currentColor'
+								class='bi bi-arrow-left'
+								viewBox='0 0 16 16'
+							>
+								{' '}
+								<path
+									fill-rule='evenodd'
+									d='M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z'
+								/>{' '}
+							</svg>
+							<p>Back</p>
+						</Link>
+					</div>
 					<div
-						className={`${styles.container} lg:flex items-center  gap-y-20 gap-x-[120px] pt-14 overflow-hidden`}
+						className={`${styles.container} lg:flex items-center  gap-y-20 gap-x-[120px] pt-10 overflow-hidden`}
 					>
 						<div className='max-w-[600px]'>
 							<Slider image={item.image} />

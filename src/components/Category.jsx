@@ -57,7 +57,7 @@ function Category() {
 						CategoryData.map(item => {
 							return (
 								<SwiperSlide className='flex justify-center' key={item.id}>
-									<div className='bg-white max-w-[244px] min-h-max cursor-pointer'>
+									<div className='bg-white max-w-[244px] min-h-max cursor-pointer transition-all hover:border-[2px] hover:border-primary'>
 										<img
 											src={item.image}
 											alt='item image'

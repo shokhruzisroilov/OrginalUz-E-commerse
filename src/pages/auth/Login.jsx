@@ -3,7 +3,7 @@ import { Input } from '../../components/index'
 
 function Login() {
 	return (
-		<div className='flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
+		<div className='flex min-h-full flex-1 flex-col justify-center items-start px-6 py-12 lg:px-8'>
 			<Link to='/' className='flex items-center gap-x-2'>
 				<svg
 					xmlns='http://www.w3.org/2000/svg'

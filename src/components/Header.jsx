@@ -21,8 +21,10 @@ function Header() {
 				className={`${styles.container} h-[75px] flex justify-between items-center`}
 			>
 				<div>
-					<span className='self-center text-textColor text-xl sm:text-2xl font-semibold whitespace-nowrap'>
-						<Link to='/'>Orginal Uz</Link>
+					<span className='self-center text-xl sm:text-2xl whitespace-nowrap text-textColor  font-[500] leading-normal'>
+						<Link to='/'>
+							Orginal.<span className='text-textSecondary'>Uz</span>
+						</Link>
 					</span>
 				</div>
 				<nav className='hidden sm:block'>

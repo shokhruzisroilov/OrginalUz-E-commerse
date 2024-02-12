@@ -5,7 +5,7 @@ import { bagBuy } from '../constants/index'
 function Product({ id, image, type, name, descreption, price }) {
 	return (
 		<Link to={`/shoping/${id}`}>
-			<div className='bg-white p-[10px] cursor-pointer shadow-shadowProduct'>
+			<div className='bg-white p-[10px] cursor-pointer hover:shadow-shadowProduct'>
 				<img src={image} alt={name} className='w-full object-cover' />
 				<h4 className='text-[#9C9C9C] pt-[10px] text-[12px] font-light leading-normal	'>
 					{type}

@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { Input } from '../../components/index'
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import AuthService from '../../service/auth'
 import { registerUserStart, registerUserSuccess } from '../../app/features/auth'
@@ -9,19 +9,23 @@ function SignUp() {
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
-	const [password2, setPassword2] = useState('')
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
-	const {isLoading, loggedIn} = useSelector(store => store.auth)
+	const { isLoading, loggedIn } = useSelector(store => store.auth)
 
 	const registerHandler = async e => {
 		e.preventDefault()
 		dispatch(registerUserStart())
-		const user = { first_name: 'Shohruz', last_name: 'Isroilov', email: 'shohruz@gmail.com', role: 'user' }
+		const user = {
+			first_name: 'Shohruz',
+			last_name: 'Isroilov',
+			email: 'shohruz@gmail.com',
+			role: 'user',
+		}
 		try {
 			const response = await AuthService.userRegister(user)
 			dispatch(registerUserSuccess(response.user))
-			// navigate('/')	
+			// navigate('/')
 		} catch (error) {
 			console.log(error)
 		}
@@ -33,7 +37,7 @@ function SignUp() {
 	}, [loggedIn])
 
 	return (
-		<div className='flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
+		<div className='flex min-h-full flex-1 flex-col justify-center items-start px-6 py-12 lg:px-8'>
 			<Link to='/' className='flex items-center gap-x-2'>
 				<svg
 					xmlns='http://www.w3.org/2000/svg'
@@ -72,12 +76,12 @@ function SignUp() {
 						state={password}
 						setState={setPassword}
 					/>
-					<Input
+					{/* <Input
 						label={'Confirm Password'}
 						type={'password'}
 						state={password2}
 						setState={setPassword2}
-					/>
+					/> */}
 					<div>
 						<button
 							type='submit'
