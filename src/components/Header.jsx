@@ -37,10 +37,10 @@ function Header() {
 						to='/register'
 						className={`${styles.btnSecondary} ${styles.btn}`}
 					>
-						Register
+						Ro'yhatdan o'tish
 					</Link>
 					<Link to='/login' className={`${styles.btnPrimary} ${styles.btn}`}>
-						Login
+						Kirish
 					</Link>
 				</div>
 				<div className=' sm:hidden' onClick={handleClick}>

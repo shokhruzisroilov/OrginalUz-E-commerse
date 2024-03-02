@@ -30,7 +30,7 @@ export default function Carousel() {
 				pagination={{
 					clickable: true,
 				}}
-				navigation={false}
+				navigation={true}
 				modules={[Autoplay, Pagination, Navigation]}
 				className='mySwiper'
 			>

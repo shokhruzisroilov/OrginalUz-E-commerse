@@ -21,7 +21,7 @@ function Product({ id, image, type, name, descreption, price }) {
 					<div
 						className={`${styles.btnSecondary} flex items-center gap-x-2 px-[10px] py-1`}
 					>
-						<p>Buy</p>
+						<p>Sotib olish</p>
 						<img src={bagBuy} alt='buy icon' />
 					</div>
 				</span>

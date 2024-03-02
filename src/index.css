@@ -3,14 +3,13 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
-  html {
-   font-family: 'Poppins', sans-serif;
-  }
+	html {
+		font-family: 'Poppins', sans-serif;
+	}
 }
 
-.sidebar{
+.sidebar {
 	animation: slide-sidebar 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
@@ -21,4 +20,9 @@
 	100% {
 		transform: translateX(0);
 	}
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+	color: #fff;
 }

@@ -19,7 +19,7 @@ function Category() {
 				<button
 					className={`${styles.btnPrimary} sl:mx-5 sm:mx-0 px-6 py-[10px]`}
 				>
-					Product Category
+					Kategoriya
 				</button>
 			</HashLink>
 			<div className='pt-5 flex justify-center'>
@@ -57,13 +57,13 @@ function Category() {
 						CategoryData.map(item => {
 							return (
 								<SwiperSlide className='flex justify-center' key={item.id}>
-									<div className='bg-white max-w-[244px] min-h-max cursor-pointer transition-all hover:border-[2px] hover:border-primary'>
+									<div className='bg-white max-w-[244px] min-h-max cursor-pointer'>
 										<img
 											src={item.image}
 											alt='item image'
 											className='w-full h-[164px] object-cover'
 										/>
-										<button className='w-full py-2 bg-secondary text-primary text-[16px] font-[500] '>
+										<button className='w-full py-2 bg-secondary hover:bg-primary text-primary hover:text-secondary text-[16px] font-[500] '>
 											{item.text}
 										</button>
 									</div>

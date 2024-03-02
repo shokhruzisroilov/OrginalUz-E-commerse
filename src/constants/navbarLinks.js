@@ -1,14 +1,14 @@
 export const navbarLinks = [
 	{
 		id: 'home',
-		title: 'Home',
+		title: 'Bosh sahifa',
 	},
 	{
 		id: 'category',
-		title: 'Category',
+		title: 'Kategoriya',
 	},
 	{
 		id: 'product',
-		title: 'Product',
+		title: 'Mahsulotlar',
 	},
 ]

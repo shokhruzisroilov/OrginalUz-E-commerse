@@ -46,7 +46,7 @@ export default function AddToCart() {
 										<div className='flex-1 overflow-y-auto px-4 py-6 sm:px-6'>
 											<div className='flex items-start justify-between'>
 												<Dialog.Title className='text-lg font-medium text-gray-900'>
-													Shopping cart
+													Xarid savati
 												</Dialog.Title>
 												<div className='ml-3 flex h-7 items-center'>
 													<button
@@ -101,7 +101,7 @@ export default function AddToCart() {
 																				type='button'
 																				className='font-medium text-orange-500 hover:text-orange-400'
 																			>
-																				Remove
+																				Olib tashlash
 																			</button>
 																		</div>
 																	</div>
@@ -115,30 +115,30 @@ export default function AddToCart() {
 
 										<div className='border-t border-gray-200 px-4 py-6 sm:px-6'>
 											<div className='flex justify-between text-base font-medium text-gray-900'>
-												<p>Subtotal</p>
+												<p>Umumiy narxi</p>
 												<p>$262.00</p>
 											</div>
-											<p className='mt-0.5 text-sm text-gray-500'>
+											{/* <p className='mt-0.5 text-sm text-gray-500'>
 												Shipping and taxes calculated at checkout.
-											</p>
+											</p> */}
 											<div className='mt-6'>
 												<Link
 													to='/'
 													className='flex items-center justify-center rounded-md border border-transparent bg-orange-400 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-orange-300'
 												>
-													Checkout
+													Sotib olish
 												</Link>
 											</div>
 											<div className='mt-6 flex justify-center text-center text-sm text-gray-500'>
 												<p>
-													or
+													yoki
 													<Link
 														to='/'
 														type='button'
 														className='font-medium text-orange-500 hover:text-orange-400'
 														onClick={() => dispatch(handelClick())}
 													>
-														Continue Shopping
+														Xarid qilishda davom eting
 														<span aria-hidden='true'> &rarr;</span>
 													</Link>
 												</p>

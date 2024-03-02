@@ -1,9 +1,6 @@
 import { styles } from '../util/style'
 import { Link, useParams } from 'react-router-dom'
 import { AddToCart } from '../components'
-import visa from '../assets/svg/visa.svg'
-import payPal from '../assets/svg/pay-pal.svg'
-import masterCard from '../assets/svg/master-card.svg'
 import Slider from '../components/Slider'
 import { productsData } from '../util/productsData'
 import { useEffect } from 'react'
@@ -32,7 +29,10 @@ function ShopingCart() {
 				<div className='w-full my-[75px] bg-mainBg' key={item.id}>
 					<ScrollToTop />
 					<div className={`${styles.container} pt-4 flex items-start`}>
-						<Link to='/' className='flex items-center gap-x-2'>
+						<Link
+							to='/'
+							className='flex items-center gap-x-2 bg-primary px-2 rounded-[10px] text-white'
+						>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
 								width='16'
@@ -47,7 +47,7 @@ function ShopingCart() {
 									d='M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z'
 								/>{' '}
 							</svg>
-							<p>Back</p>
+							<p>Orqaga</p>
 						</Link>
 					</div>
 					<div
@@ -66,38 +66,17 @@ function ShopingCart() {
 							<p className='max-w-[500px] text-textColor text-[16px] font-light py-2'>
 								{item.descreption}
 							</p>
-							<p>Cost: {item.price}</p>
+							<p>Narxi: {item.price}</p>
 							<form className='mt-6'>
-								<p className=' text-textColor text-[16px] font-normal'>
-									Color:
-								</p>
-								<select className='xs:w-[348px] w-[250px] bg-white py-3 px-4 outline-none mt-2 border-2 rounded border-gray-400'>
-									<option value=''>Blue</option>
-									<option value=''>Black</option>
-									<option value=''>Withe</option>
-									<option value=''>Gray</option>
-								</select>
-								<div className='py-10 flex col-x-10'>
-									<input
-										type='number'
-										placeholder='1'
-										className='xs:max-w-[180px] max-w-[80px] border-2 rounded border-gray-400  py-3 px-4 outline-none mr-6'
-									/>
-									<div className=''>
-										<Link
-											href='#'
-											className='flex items-center justify-center rounded-md border border-transparent bg-orange-400 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-orange-300'
-										>
-											Add to cart
-										</Link>
-									</div>
+								<div className=''>
+									<Link
+										href='#'
+										className='flex items-center justify-center rounded-md border border-transparent bg-orange-400 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-orange-300'
+									>
+										Savatga qo'shish
+									</Link>
 								</div>
 							</form>
-							<div className='flex flex-wrap gap-6 cursor-pointer'>
-								<img src={visa} alt='visa' />
-								<img src={payPal} alt='pay-pal' />
-								<img src={masterCard} alt='master-cart' />
-							</div>
 						</div>
 					</div>
 					<AddToCart />

@@ -6,10 +6,10 @@ function Search() {
 				<input
 					type='text'
 					className=' bg-white text-[#9A9999] text-[14px] font-normal leading-[16px] outline-none px-4 w-full h-full '
-					placeholder='search something...'
+					placeholder='Mahsulotlarni izlash...'
 				/>
 				<button className={`${styles.btnPrimary} border-none px-6 py-3`}>
-					Search
+					Izlash
 				</button>
 			</div>
 		</div>

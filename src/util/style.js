@@ -1,5 +1,5 @@
 export const styles = {
-	container: 'max-w-[1700px] md:px-20 sm:px-10 px-5 m-auto',
+	container: 'max-w-[1700px] md:px-20 md:px-10 px-5 m-auto',
 	styleNav: 'text-textColor text-[14px] font-light leading-normal',
 	styleNavActive:
 		'text-textSecondary text-[14px] font-[500] leading-normal border-bottom',
