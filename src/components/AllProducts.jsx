@@ -2,8 +2,12 @@ import Search from './Search'
 import Product from './Product'
 import { styles } from '../util/style'
 import { productsData } from '../util/productsData'
+import { useSelector } from 'react-redux'
 
 function AllProducts() {
+	const products = useSelector(state => state.products)
+	console.log(products)
+
 	return (
 		<div className={`${styles.container} py-10 pb-20`} id='product'>
 			<h2 className='text-center text-textColor sm:text-[32px] text-[24px] font-[500] leading-normal'>
