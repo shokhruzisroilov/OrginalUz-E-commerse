@@ -5,5 +5,9 @@ const AuthService = {
 		const response = await axios.post('/auth/signup/', user)
 		return response.data
 	},
+	async userLogin(user) {
+		const response = await axios.post('/auth/login/', user)
+		return response.data
+	},
 }
 export default AuthService

@@ -3,7 +3,14 @@ import { Input } from '../../components/index'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import AuthService from '../../service/auth'
-import { registerUserStart, registerUserSuccess } from '../../app/features/auth'
+import {
+	registerUserFailure,
+	registerUserStart,
+	registerUserSuccess,
+} from '../../app/features/auth'
+
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function SignUp() {
 	const [username, setUsername] = useState('')
@@ -12,6 +19,7 @@ function SignUp() {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const { isLoading, loggedIn } = useSelector(store => store.auth)
+	const notify = () => toast('Wow so easy!')
 
 	const registerHandler = async e => {
 		e.preventDefault()
@@ -23,18 +31,19 @@ function SignUp() {
 		}
 		try {
 			const response = await AuthService.userRegister(user)
-			// dispatch(registerUserSuccess(response))
-			console.log(response)
-			navigate('/')
+			dispatch(registerUserSuccess(response))
+			navigate('/login')
 		} catch (error) {
-			console.log('Error', error.response.data)
+			dispatch(registerUserFailure(error.response.data))
+			// toast.success('fdasfsda')
+			console.log(response.data)
 		}
 	}
-	// useEffect(() => {
-	// 	if (loggedIn) {
-	// 		navigate('/')
-	// 	}
-	// }, [loggedIn])
+	useEffect(() => {
+		if (loggedIn) {
+			navigate('/login')
+		}
+	}, [loggedIn])
 
 	return (
 		<div className='flex min-h-full flex-1 flex-col justify-center items-start px-6 py-12 lg:px-8'>
@@ -66,6 +75,7 @@ function SignUp() {
 
 			<div className='mt-10 sm:mx-auto sm:w-full sm:max-w-sm'>
 				<form className='space-y-6' onSubmit={registerHandler}>
+					<ToastContainer />
 					<Input
 						label={'Telfon nomer'}
 						type={'tel'}
@@ -89,6 +99,7 @@ function SignUp() {
 					/>
 					<button
 						type='submit'
+						onClick={notify}
 						disabled={isLoading}
 						className='flex w-full justify-center rounded-md bg-orange-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400'
 					>
