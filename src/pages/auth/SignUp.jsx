@@ -1,14 +1,14 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { Input } from '../../components/index'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import AuthService from '../../service/auth'
 import { registerUserStart, registerUserSuccess } from '../../app/features/auth'
 
 function SignUp() {
-	const [name, setName] = useState('')
-	const [email, setEmail] = useState('')
-	const [password, setPassword] = useState('')
+	const [username, setUsername] = useState('')
+	const [password1, setPassword1] = useState('')
+	const [password2, setPassword2] = useState('')
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const { isLoading, loggedIn } = useSelector(store => store.auth)
@@ -17,24 +17,24 @@ function SignUp() {
 		e.preventDefault()
 		dispatch(registerUserStart())
 		const user = {
-			first_name: 'Shohruz',
-			last_name: 'Isroilov',
-			email: 'shohruz@gmail.com',
-			role: 'user',
+			username: username,
+			password1: password1,
+			password2: password2,
 		}
 		try {
 			const response = await AuthService.userRegister(user)
-			dispatch(registerUserSuccess(response.user))
-			// navigate('/')
+			// dispatch(registerUserSuccess(response))
+			console.log(response)
+			navigate('/')
 		} catch (error) {
-			console.log(error)
+			console.log('Error', error.response.data)
 		}
 	}
-	useEffect(() => {
-		if (loggedIn) {
-			navigate('/')
-		}
-	}, [loggedIn])
+	// useEffect(() => {
+	// 	if (loggedIn) {
+	// 		navigate('/')
+	// 	}
+	// }, [loggedIn])
 
 	return (
 		<div className='flex min-h-full flex-1 flex-col justify-center items-start px-6 py-12 lg:px-8'>
@@ -65,45 +65,41 @@ function SignUp() {
 			</div>
 
 			<div className='mt-10 sm:mx-auto sm:w-full sm:max-w-sm'>
-				<form className='space-y-6'>
+				<form className='space-y-6' onSubmit={registerHandler}>
 					<Input
-						label={'Ismingiz'}
-						type={'text'}
-						state={name}
-						setState={setName}
+						label={'Telfon nomer'}
+						type={'tel'}
+						placeholder={'+998 9X XXX XX XX'}
+						state={username}
+						setState={setUsername}
 					/>
 					<Input
-						label={'Emailingiz'}
-						type={'email'}
-						state={email}
-						setState={setEmail}
-					/>
-					<Input
-						label={'Parolingiz'}
+						label={'Parol yarating'}
 						type={'password'}
-						state={password}
-						setState={setPassword}
+						placeholder={''}
+						state={password1}
+						setState={setPassword1}
 					/>
-					{/* <Input
-						label={'Confirm Password'}
+					<Input
+						label={'Parolingizni qayta kiriting'}
 						type={'password'}
+						placeholder={''}
 						state={password2}
 						setState={setPassword2}
-					/> */}
+					/>
 					<button
 						type='submit'
 						disabled={isLoading}
-						onClick={registerHandler}
 						className='flex w-full justify-center rounded-md bg-orange-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400'
 					>
 						{isLoading ? 'Yuklanmoqda...' : "Ro'yhatdan o'tish"}
 					</button>
 				</form>
-				<p class='mt-10 text-center text-sm text-gray-500'>
+				<p className='mt-10 text-center text-sm text-gray-500'>
 					Akountingiz bo'lsa Kirishni bosing{'  '}
 					<Link
 						to='/login'
-						class='font-semibold leading-6 text-orange-300 hover:text-orange-400'
+						className='font-semibold leading-6 text-orange-300 hover:text-orange-400'
 					>
 						Kirish
 					</Link>
