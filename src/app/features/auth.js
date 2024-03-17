@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { setItem } from '../../heplers/persistanceStorage'
 
 const initialState = {
 	isLoading: false,
 	loggedIn: false,
-	error: null,
-	user: null,
-	token: null,
+	errorReg: null,
+	errorLog: null,
+	register: null,
+	login: null,
 }
 
 export const authSlice = createSlice({
@@ -17,13 +19,12 @@ export const authSlice = createSlice({
 			state.isLoading = true
 		},
 		registerUserSuccess: (state, action) => {
-			state.loggedIn = true
 			state.isLoading = false
-			state.user = action.payload
+			state.register = action.payload
 		},
 		registerUserFailure: (state, action) => {
 			state.isLoading = false
-			state.error = action.payload
+			state.errorReg = action.payload
 		},
 		//login
 		loginUserStart: state => {
@@ -32,11 +33,16 @@ export const authSlice = createSlice({
 		loginUserSuccess: (state, action) => {
 			state.loggedIn = true
 			state.isLoading = false
-			state.token = action.payload
+			state.login = action.payload
+			setItem('token', action.payload.key)
 		},
 		loginUserFailure: (state, action) => {
 			state.isLoading = false
-			state.error = action.payload
+			state.errorLog = action.payload
+		},
+		logoutUser: state => {
+			state.login = null
+			state.loggedIn = false
 		},
 	},
 })
@@ -49,4 +55,5 @@ export const {
 	loginUserStart,
 	loginUserSuccess,
 	loginUserFailure,
+	logoutUser,
 } = authSlice.actions

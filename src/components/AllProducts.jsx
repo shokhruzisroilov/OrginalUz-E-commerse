@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 
 function AllProducts() {
 	const products = useSelector(state => state.products)
-	console.log(products)
+	// console.log(products)
 
 	return (
 		<div className={`${styles.container} py-10 pb-20`} id='product'>

@@ -15,10 +15,24 @@ import 'react-toastify/dist/ReactToastify.css'
 function Login() {
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
+	const { isLoading, loggedIn, errorLog, register } = useSelector(
+		store => store.auth
+	)
 
-	const { isLoading, loggedIn } = useSelector(store => store.auth)
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
+
+	useEffect(() => {
+		if (register !== null) {
+			toast.success(register.detail)
+		}
+	}, [register])
+
+	useEffect(() => {
+		if (errorLog !== null) {
+			toast.error('Telfon raqam yoki paralingiz xato')
+		}
+	}, [errorLog])
 
 	const LoginHandler = async e => {
 		e.preventDefault()
@@ -31,11 +45,8 @@ function Login() {
 			const response = await AuthService.userLogin(user)
 			dispatch(loginUserSuccess(response))
 			navigate('/')
-			console.log(response)
 		} catch (error) {
-			dispatch(loginUserFailure(error))
-			console.log(error)
-			toast.error(error.message)
+			dispatch(loginUserFailure(error.response.data))
 		}
 	}
 

@@ -7,12 +7,22 @@ import {
 	SignUp,
 	Error404Page,
 } from './index'
+import { useEffect } from 'react'
+import { getItem } from './heplers/persistanceStorage'
 
 function App() {
+	const getUser = () => {
+		const token = getItem('token')
+		return token
+	}
+	useEffect(() => {
+		getUser()
+	}, [])
+
 	return (
 		<>
 			<Routes>
-				<Route path='/' element={<Layouts />}>
+				<Route path='/' element={<Layouts getUser={getUser} />}>
 					<Route index element={<HomePage />} />
 					<Route path='/shoping/:postId' element={<ShopingCart />} />
 				</Route>

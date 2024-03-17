@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { Input } from '../../components/index'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import AuthService from '../../service/auth'
 import {
@@ -18,8 +18,23 @@ function SignUp() {
 	const [password2, setPassword2] = useState('')
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
-	const { isLoading, loggedIn } = useSelector(store => store.auth)
-	const notify = () => toast('Wow so easy!')
+	const { isLoading, errorReg, loggedIn } = useSelector(store => store.auth)
+
+	// Error validate
+	const errorMessage = useCallback(() => {
+		return Object.keys(errorReg).map(name => {
+			const msg = errorReg[name].join(' ')
+			return `${name} - ${msg}`
+		})
+	}, [errorReg])
+
+	useEffect(() => {
+		if (errorReg !== null) {
+			errorMessage().map(err => {
+				return toast.error(err)
+			})
+		}
+	}, [errorReg])
 
 	const registerHandler = async e => {
 		e.preventDefault()
@@ -35,13 +50,12 @@ function SignUp() {
 			navigate('/login')
 		} catch (error) {
 			dispatch(registerUserFailure(error.response.data))
-			// toast.success('fdasfsda')
-			console.log(response.data)
 		}
 	}
+
 	useEffect(() => {
 		if (loggedIn) {
-			navigate('/login')
+			navigate('/')
 		}
 	}, [loggedIn])
 
@@ -99,7 +113,6 @@ function SignUp() {
 					/>
 					<button
 						type='submit'
-						onClick={notify}
 						disabled={isLoading}
 						className='flex w-full justify-center rounded-md bg-orange-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400'
 					>

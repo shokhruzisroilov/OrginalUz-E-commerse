@@ -2,10 +2,10 @@ import { Header } from '../components/index'
 import { Footer } from '../components/index'
 import { Outlet } from 'react-router-dom'
 
-function Layouts() {
+function Layouts({ getUser }) {
 	return (
 		<>
-			<Header />
+			<Header getUser={getUser} />
 			<Outlet />
 			<Footer />
 		</>

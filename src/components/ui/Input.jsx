@@ -1,4 +1,5 @@
 function Input({ label, type, placeholder, state, setState }) {
+	const id = `${type}-${Math.random().toString(36).substring(7)}`
 	return (
 		<div>
 			<label
@@ -9,7 +10,7 @@ function Input({ label, type, placeholder, state, setState }) {
 			</label>
 			<div className='mt-2'>
 				<input
-					id={type}
+					id={id}
 					name={type}
 					type={type}
 					autoComplete={type}

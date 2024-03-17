@@ -1,13 +1,22 @@
-import { useState } from 'react'
-
+import { Navbar } from '../components/index'
 import { styles } from '../util/style'
 import { Link } from 'react-router-dom'
-import { Navbar } from '../components/index'
-
+import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { humburger, colseMenu } from '../constants/index'
+import { FaRegUser } from 'react-icons/fa'
+import { removeItem } from '../heplers/persistanceStorage'
+import { logoutUser } from '../app/features/auth'
 
-function Header() {
+function Header({ getUser }) {
 	const [burger, setBurger] = useState(true)
+	const { loggedIn } = useSelector(store => store.auth)
+	const dispatch = useDispatch()
+
+	const logoutHandle = () => {
+		dispatch(logoutUser())
+		removeItem('token')
+	}
 
 	const handleClick = () => {
 		setBurger(!burger)
@@ -32,18 +41,31 @@ function Header() {
 						<Navbar />
 					</ul>
 				</nav>
-				<div className='hidden sm:flex gap-x-[10px]'>
-					<Link
-						to='/register'
-						className={`${styles.btnSecondary} ${styles.btn}`}
-					>
-						Ro'yhatdan o'tish
-					</Link>
-					<Link to='/login' className={`${styles.btnPrimary} ${styles.btn}`}>
-						Kirish
-					</Link>
-				</div>
-				<div className=' sm:hidden' onClick={handleClick}>
+				{getUser() !== null ? (
+					<div className='hidden sm:flex gap-x-[20px] items-center'>
+						<FaRegUser className='text-textColor text-xl cursor-pointer' />
+						<button
+							className={`${styles.btnPrimary} ${styles.btn}`}
+							onClick={logoutHandle}
+						>
+							Logout
+						</button>
+					</div>
+				) : (
+					<div className='hidden sm:flex gap-x-[10px]'>
+						<Link
+							to='/register'
+							className={`${styles.btnSecondary} ${styles.btn}`}
+						>
+							Ro'yhatdan o'tish
+						</Link>
+						<Link to='/login' className={`${styles.btnPrimary} ${styles.btn}`}>
+							Kirish
+						</Link>
+					</div>
+				)}
+
+				<div className='sm:hidden' onClick={handleClick}>
 					{burger ? (
 						<img src={humburger} alt='humburger-image' className='w-6 h-6' />
 					) : (
@@ -52,21 +74,36 @@ function Header() {
 				</div>
 			</div>
 			{!burger ? (
-				<div className='bg-white flex flex-col gap-10 py-6 sidebar'>
+				<div className='bg-white flex flex-col gap-10 py-6 sidebar sm:hidden'>
 					<ul className='flex items-center justify-center gap-x-5'>
 						<Navbar handleClick={handleClick} />
 					</ul>
-					<div className='flex justify-center gap-x-[10px]'>
-						<Link
-							to='/register'
-							className={`${styles.btnSecondary} ${styles.btn}`}
-						>
-							Register
-						</Link>
-						<Link to='/login' className={`${styles.btnPrimary} ${styles.btn}`}>
-							Login
-						</Link>
-					</div>
+					{getUser() !== null ? (
+						<div className='flex justify-center gap-x-[20px] items-center'>
+							<FaRegUser className='text-textColor text-xl cursor-pointer' />
+							<button
+								className={`${styles.btnPrimary} ${styles.btn}`}
+								onClick={logoutHandle}
+							>
+								Logout
+							</button>
+						</div>
+					) : (
+						<div className='flex justify-center gap-x-[10px]'>
+							<Link
+								to='/register'
+								className={`${styles.btnSecondary} ${styles.btn}`}
+							>
+								Register
+							</Link>
+							<Link
+								to='/login'
+								className={`${styles.btnPrimary} ${styles.btn}`}
+							>
+								Login
+							</Link>
+						</div>
+					)}
 				</div>
 			) : null}
 		</header>
