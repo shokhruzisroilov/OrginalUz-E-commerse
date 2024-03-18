@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
 	isLoading: false,
 	products: [],
+	productDetail: [],
 	error: null,
 }
 
@@ -21,9 +22,26 @@ const productsSlice = createSlice({
 			state.isLoading = false
 			state.error = action.payload
 		},
+		getProductDetailsStart: state => {
+			state.isLoading = true
+		},
+		getProductDetailsSuccess: (state, action) => {
+			state.isLoading = false
+			state.productDetail = action.payload
+		},
+		getProductDetailsFailure: (state, action) => {
+			state.isLoading = false
+			state.error = action.payload
+		},
 	},
 })
 
 export default productsSlice.reducer
-export const { getProductsStart, getProductsSuccess, getProductsFailure } =
-	productsSlice.actions
+export const {
+	getProductsStart,
+	getProductsSuccess,
+	getProductsFailure,
+	getProductDetailsStart,
+	getProductDetailsSuccess,
+	getProductDetailsFailure,
+} = productsSlice.actions

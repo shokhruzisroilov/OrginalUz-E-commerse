@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom'
 import { bagBuy } from '../constants/index'
 
 function Product({ id, image1, category, title, description, price }) {
-	console.log(category)
+	// description
+	const sliceDescription =
+		description.length >= 70 ? description.slice(0, 70) + '...' : title
 	return (
 		<Link to={`/shoping/${id}`}>
 			<div className='bg-white p-[10px] cursor-pointer hover:shadow-shadowProduct'>
@@ -18,7 +20,9 @@ function Product({ id, image1, category, title, description, price }) {
 				<h3 className='text-textColor text-[16px] font-normal leading-[150%]'>
 					{title}
 				</h3>
-				<p className='text-textColor text-[12px] font-light'>{description}</p>
+				<p className='text-textColor text-[12px] font-light'>
+					{sliceDescription}
+				</p>
 				<span className='pt-[12px] flex justify-between'>
 					<p className='text-black text-14px font-[500] leading-normal'>
 						{price}

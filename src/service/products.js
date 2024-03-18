@@ -5,6 +5,10 @@ const ProductService = {
 		const response = await axios.get('/products/')
 		return response.data
 	},
+	async getProductsDetail(id) {
+		const response = await axios.get(`/products/${id}`)
+		return response.data
+	},
 }
 
 export default ProductService

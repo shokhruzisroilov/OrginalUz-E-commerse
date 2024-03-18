@@ -1,7 +1,6 @@
 import Search from './Search'
 import Product from './Product'
 import { styles } from '../util/style'
-import { productsData } from '../util/productsData'
 import { useDispatch, useSelector } from 'react-redux'
 import ProductService from '../service/products'
 import { useEffect } from 'react'

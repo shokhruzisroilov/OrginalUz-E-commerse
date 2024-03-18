@@ -9,7 +9,7 @@ import 'swiper/css/pagination'
 
 // import required modules
 import { Zoom, Navigation, Pagination } from 'swiper/modules'
-export default function Slider({ image }) {
+export default function Slider({ image1, image2, image3, image4, image5 }) {
 	return (
 		<>
 			<Swiper
@@ -27,49 +27,38 @@ export default function Slider({ image }) {
 			>
 				<SwiperSlide>
 					<div className='swiper-zoom-container'>
-						<img src={image} className='w-full object-cover' />
+						<img src={image1} className='w-full object-cover' />
 					</div>
 				</SwiperSlide>
-				<SwiperSlide>
-					<div className='swiper-zoom-container'>
-						<img src={image} className='w-full object-cover' />
-					</div>
-				</SwiperSlide>
-				<SwiperSlide>
-					<div className='swiper-zoom-container'>
-						<img src={image} className='w-full object-cover' />
-					</div>
-				</SwiperSlide>
-				<SwiperSlide>
-					<div className='swiper-zoom-container'>
-						<img src={image} className='w-full object-cover' />
-					</div>
-				</SwiperSlide>
-				<SwiperSlide>
-					<div className='swiper-zoom-container'>
-						<img src={image} className='w-full object-cover' />
-					</div>
-				</SwiperSlide>
-				<SwiperSlide>
-					<div className='swiper-zoom-container'>
-						<img src={image} className='w-full object-cover' />
-					</div>
-				</SwiperSlide>
-				<SwiperSlide>
-					<div className='swiper-zoom-container'>
-						<img src={image} className='w-full object-cover' />
-					</div>
-				</SwiperSlide>
-				<SwiperSlide>
-					<div className='swiper-zoom-container'>
-						<img src={image} className='w-full object-cover' />
-					</div>
-				</SwiperSlide>
-				<SwiperSlide>
-					<div className='swiper-zoom-container'>
-						<img src={image} className='w-full object-cover' />
-					</div>
-				</SwiperSlide>
+				{image2 !== null && (
+					<SwiperSlide>
+						<div className='swiper-zoom-container'>
+							<img src={image2} className='w-full object-cover' />
+						</div>
+					</SwiperSlide>
+				)}
+				{image3 !== null && (
+					<SwiperSlide>
+						<div className='swiper-zoom-container'>
+							<img src={image3} className='w-full object-cover' />
+						</div>
+					</SwiperSlide>
+				)}
+
+				{image4 !== null && (
+					<SwiperSlide>
+						<div className='swiper-zoom-container'>
+							<img src={image4} className='w-full object-cover' />
+						</div>
+					</SwiperSlide>
+				)}
+				{image5 !== null && (
+					<SwiperSlide>
+						<div className='swiper-zoom-container'>
+							<img src={image5} className='w-full object-cover' />
+						</div>
+					</SwiperSlide>
+				)}
 			</Swiper>
 		</>
 	)
