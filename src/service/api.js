@@ -10,4 +10,13 @@ axios.interceptors.request.use(config => {
 	return config
 })
 
+// axios.interceptors.response.use(
+// 	response => response,
+// 	error => {
+// 		if ((error.message = 'Network Error')) {
+// 			alert("Serverda xatolik yuzaga keldi. Iltimos, keyinroq urinib ko'ring.")
+// 		}
+// 	}
+// )
+
 export default axios

@@ -1,6 +1,6 @@
 import { Navbar } from '../components/index'
 import { styles } from '../util/style'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { humburger, colseMenu } from '../constants/index'
@@ -12,10 +12,12 @@ function Header({ getUser }) {
 	const [burger, setBurger] = useState(true)
 	const { loggedIn } = useSelector(store => store.auth)
 	const dispatch = useDispatch()
+	const navigate = useNavigate()
 
 	const logoutHandle = () => {
 		dispatch(logoutUser())
 		removeItem('token')
+		navigate('/')
 	}
 
 	const handleClick = () => {
@@ -24,6 +26,7 @@ function Header({ getUser }) {
 
 	const clazz = `${styles.styleNav}`
 	const activeClazz = `${styles.styleNavActive}`
+
 	return (
 		<header className='w-full bg-white shadow-shadowHead fixed top-0 z-10'>
 			<div

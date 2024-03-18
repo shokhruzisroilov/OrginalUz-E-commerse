@@ -2,11 +2,35 @@ import Search from './Search'
 import Product from './Product'
 import { styles } from '../util/style'
 import { productsData } from '../util/productsData'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import ProductService from '../service/products'
+import { useEffect } from 'react'
+import {
+	getProductsFailure,
+	getProductsStart,
+	getProductsSuccess,
+} from '../app/features/products/productsSlice'
+import LoaderProduct from '../animation/LoaderProduct/LoaderProduct'
+import NotFount from './ui/NotFount'
 
 function AllProducts() {
-	const products = useSelector(state => state.products)
-	// console.log(products)
+	const { isLoading, products } = useSelector(state => state.products)
+	const dispatch = useDispatch()
+
+	const getProducts = async () => {
+		dispatch(getProductsStart())
+		try {
+			const response = await ProductService.getProducts()
+			dispatch(getProductsSuccess(response))
+			// console.log(response)
+		} catch (error) {
+			dispatch(getProductsFailure('Mahsulot topilmadi'))
+		}
+	}
+
+	useEffect(() => {
+		getProducts()
+	}, [])
 
 	return (
 		<div className={`${styles.container} py-10 pb-20`} id='product'>
@@ -14,20 +38,22 @@ function AllProducts() {
 				Barcha Mahsulotlar
 			</h2>
 			<Search />
+			<div className='w-full flex items-center justify-center'>
+				{isLoading && (
+					<div className='grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 pt-10'>
+						{Array.from({ length: products.length }, (_, index) => (
+							<LoaderProduct key={index} />
+						))}
+					</div>
+				)}
+				{!isLoading && products.length === 0 && <NotFount />}
+			</div>
 			<div className='grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 pt-10'>
-				{productsData.map(item => {
-					return (
-						<Product
-							key={item.id}
-							id={item.id}
-							image={item.image}
-							type={item.type}
-							name={item.name}
-							descreption={item.descreption}
-							price={item.price}
-						/>
-					)
-				})}
+				{!isLoading &&
+					products &&
+					products.map(product => {
+						return <Product key={product.id} {...product} />
+					})}
 			</div>
 		</div>
 	)
