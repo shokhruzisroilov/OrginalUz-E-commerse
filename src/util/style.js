@@ -7,5 +7,5 @@ export const styles = {
 	btnSecondary:
 		'bg-secondary text-textSecondary text-[14px] font-normal leading-norml',
 	btnPrimary: 'bg-primary text-white text-[14px] font-normal leading-norml',
-	sliderImage: 'w-full h-full object-cover object-left',
+	sliderImage: 'w-full h-full object-cover object-center',
 }

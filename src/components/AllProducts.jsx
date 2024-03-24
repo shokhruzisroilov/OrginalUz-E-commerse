@@ -21,7 +21,6 @@ function AllProducts() {
 		try {
 			const response = await ProductService.getProducts()
 			dispatch(getProductsSuccess(response))
-			// console.log(response)
 		} catch (error) {
 			dispatch(getProductsFailure('Mahsulot topilmadi'))
 		}

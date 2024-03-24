@@ -7,9 +7,37 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/pagination'
+import { useDispatch, useSelector } from 'react-redux'
+import Categoryservice from '../service/category'
+import { useEffect } from 'react'
+import {
+	getCategoryFailure,
+	getCategoryStart,
+	getCategorySuccess,
+} from '../app/features/category/categorySlice'
+import LoaderCategory from '../animation/LoaderCategory'
 // import required modules
 
 function Category() {
+	const { categories, isLoading, error } = useSelector(state => state.category)
+	// console.log(categories)
+	const dispatch = useDispatch()
+
+	const getCategory = async () => {
+		dispatch(getCategoryStart())
+		try {
+			const response = await Categoryservice.getCategory()
+			dispatch(getCategorySuccess(response))
+		} catch (error) {
+			dispatch(getCategoryFailure(error))
+			console.log(error)
+		}
+	}
+
+	useEffect(() => {
+		getCategory()
+	}, [])
+
 	return (
 		<div
 			className={`pt-10 md:max-w-[1700px] md:px-20 sm:px-10 m-auto`}
@@ -23,6 +51,9 @@ function Category() {
 				</button>
 			</HashLink>
 			<div className='pt-5 flex justify-center'>
+				<div className='flex items-center justify-center'>
+					{isLoading && <LoaderCategory />}
+				</div>
 				<Swiper
 					slidesPerView={1}
 					spaceBetween={10}
@@ -53,18 +84,19 @@ function Category() {
 					}}
 					className='mySwiper'
 				>
-					{CategoryData &&
-						CategoryData.map(item => {
+					{!isLoading &&
+						categories &&
+						categories.map(item => {
 							return (
 								<SwiperSlide className='flex justify-center' key={item.id}>
 									<div className='bg-white max-w-[244px] min-h-max cursor-pointer'>
 										<img
 											src={item.image}
-											alt='item image'
-											className='w-full h-[164px] object-cover'
+											alt={item.title}
+											className='w-full  h-[164px] object-cover'
 										/>
 										<button className='w-full py-2 bg-secondary hover:bg-primary text-primary hover:text-secondary text-[16px] font-[500] '>
-											{item.text}
+											{item.title}
 										</button>
 									</div>
 								</SwiperSlide>

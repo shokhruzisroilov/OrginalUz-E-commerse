@@ -2,7 +2,7 @@ import axios from './api'
 
 const ProductService = {
 	async getProducts() {
-		const response = await axios.get('/products/')
+		const response = await axios.get('/products')
 		return response.data
 	},
 	async getProductsDetail(id) {

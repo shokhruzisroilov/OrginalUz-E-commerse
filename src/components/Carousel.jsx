@@ -10,9 +10,9 @@ import 'swiper/css/navigation'
 import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 //import slider image
 import sliderImage from '../assets/images/slider-image.jpg'
-import sliderImage2 from '../assets/images/slider2.jpg'
-import sliderImage3 from '../assets/images/slider3.jpg'
-import sliderImage4 from '../assets/images/slider4.jpg'
+import sliderImage2 from '../assets/images/slider-image.jpg'
+import sliderImage3 from '../assets/images/slider-image.jpg'
+import sliderImage4 from '../assets/images/slider-image.jpg'
 
 export default function Carousel() {
 	return (

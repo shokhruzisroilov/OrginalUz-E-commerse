@@ -34,9 +34,7 @@ function Header({ getUser }) {
 			>
 				<div>
 					<span className='self-center text-xl sm:text-2xl whitespace-nowrap text-textColor  font-[500] leading-normal'>
-						<Link to='/'>
-							Orginal.<span className='text-textSecondary'>Uz</span>
-						</Link>
+						<Link to='/'>Dreams Shop</Link>
 					</span>
 				</div>
 				<nav className='hidden sm:block'>

@@ -92,7 +92,7 @@ function ShopingCart() {
 						<h2 className='text-textColor sm:text-[28px] text-[24px] font-[400] leading-normal'>
 							{productDetail.title}
 						</h2>
-						<p className='max-w-[500px] text-textColor text-[16px] font-light py-2'>
+						<p className='text-textColor text-[16px] font-light py-2'>
 							{productDetail.description}
 						</p>
 						<p>Narxi: {productDetail.price}</p>

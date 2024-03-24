@@ -5,6 +5,7 @@ const initialState = {
 	products: [],
 	productDetail: [],
 	error: null,
+	searchResults: [],
 }
 
 const productsSlice = createSlice({
@@ -44,4 +45,5 @@ export const {
 	getProductDetailsStart,
 	getProductDetailsSuccess,
 	getProductDetailsFailure,
+	searchProduct,
 } = productsSlice.actions

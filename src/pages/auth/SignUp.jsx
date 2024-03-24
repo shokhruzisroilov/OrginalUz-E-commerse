@@ -24,7 +24,7 @@ function SignUp() {
 	const errorMessage = useCallback(() => {
 		return Object.keys(errorReg).map(name => {
 			const msg = errorReg[name].join(' ')
-			return `${name} - ${msg}`
+			return `${msg}`
 		})
 	}, [errorReg])
 

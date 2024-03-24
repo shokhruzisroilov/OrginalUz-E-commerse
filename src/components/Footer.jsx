@@ -1,6 +1,5 @@
 import { styles } from '../util/style'
 import { HashLink as Link } from 'react-router-hash-link'
-import { logo } from '../constants/index'
 
 import {
 	MacPlay,
@@ -23,13 +22,8 @@ function Footer() {
 							className='flex flex-col gap-y-10 justify-start items-start'
 						>
 							<div className='flex items-center justify-start'>
-								<img
-									src={logo}
-									className='h-10 rounded-full object-cover mr-3'
-									alt='FlowBite Logo'
-								/>
-								<span className='self-center text-2xl font-semibold whitespace-nowrap'>
-									Orginal Uz
+								<span className='self-center text-xl sm:text-2xl whitespace-nowrap text-textColor  font-[500] leading-normal'>
+									Dreams Shop
 								</span>
 							</div>
 							<div className='sm:flex-row flex flex-col gap-4 '>
