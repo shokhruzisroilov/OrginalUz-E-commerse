@@ -10,7 +10,7 @@ const AuthService = {
 		return response.data
 	},
 	async getUser() {
-		const response = await axios.post('')
+		const response = await axios.post('/user/profile')
 		return response.data
 	},
 }

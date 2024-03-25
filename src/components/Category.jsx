@@ -1,5 +1,4 @@
 import { styles } from '../util/style'
-import { CategoryData } from '../util/CategoryData'
 import { HashLink } from 'react-router-hash-link'
 //slider
 // Import Swiper React components

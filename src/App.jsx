@@ -9,20 +9,28 @@ import {
 } from './index'
 import { useEffect } from 'react'
 import { getItem } from './heplers/persistanceStorage'
+import AuthService from './service/auth'
 
 function App() {
-	const getUser = () => {
-		const token = getItem('token')
-		return token
+	const getUser = async () => {
+		try {
+			const response = await AuthService.getUser()
+			console.log(response)
+		} catch (error) {
+			console.log(error)
+		}
 	}
 	useEffect(() => {
-		getUser()
+		const token = getItem('token')
+		if (token) {
+			getUser()
+		}
 	}, [])
 
 	return (
 		<>
 			<Routes>
-				<Route path='/' element={<Layouts getUser={getUser} />}>
+				<Route path='/' element={<Layouts />}>
 					<Route index element={<HomePage />} />
 					<Route path='/shoping/:postId' element={<ShopingCart />} />
 				</Route>

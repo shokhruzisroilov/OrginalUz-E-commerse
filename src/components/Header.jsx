@@ -8,7 +8,7 @@ import { FaRegUser } from 'react-icons/fa'
 import { removeItem } from '../heplers/persistanceStorage'
 import { logoutUser } from '../app/features/auth'
 
-function Header({ getUser }) {
+function Header() {
 	const [burger, setBurger] = useState(true)
 	const { loggedIn } = useSelector(store => store.auth)
 	const dispatch = useDispatch()
@@ -42,7 +42,7 @@ function Header({ getUser }) {
 						<Navbar />
 					</ul>
 				</nav>
-				{getUser() !== null ? (
+				{loggedIn ? (
 					<div className='hidden sm:flex gap-x-[20px] items-center'>
 						<FaRegUser className='text-textColor text-xl cursor-pointer' />
 						<button
@@ -79,7 +79,7 @@ function Header({ getUser }) {
 					<ul className='flex items-center justify-center gap-x-5'>
 						<Navbar handleClick={handleClick} />
 					</ul>
-					{getUser() !== null ? (
+					{loggedIn ? (
 						<div className='flex justify-center gap-x-[20px] items-center'>
 							<FaRegUser className='text-textColor text-xl cursor-pointer' />
 							<button
