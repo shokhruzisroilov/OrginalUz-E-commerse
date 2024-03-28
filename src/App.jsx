@@ -9,22 +9,17 @@ import {
 } from './index'
 import { useEffect } from 'react'
 import { getItem } from './heplers/persistanceStorage'
-import AuthService from './service/auth'
+import { useDispatch, useSelector } from 'react-redux'
+import { refreshLogin } from './app/features/auth'
 
 function App() {
+	const dispatch = useDispatch()
+
 	const getUser = async () => {
-		try {
-			const response = await AuthService.getUser()
-			console.log(response)
-		} catch (error) {
-			console.log(error)
-		}
+		dispatch(refreshLogin())
 	}
 	useEffect(() => {
-		const token = getItem('token')
-		if (token) {
-			getUser()
-		}
+		getUser()
 	}, [])
 
 	return (

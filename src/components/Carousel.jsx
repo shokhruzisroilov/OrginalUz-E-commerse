@@ -10,7 +10,7 @@ import 'swiper/css/navigation'
 import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 //import slider image
 import sliderImage from '../assets/images/slider-image.jpg'
-import sliderImage2 from '../assets/images/slider-image.jpg'
+import sliderImage2 from '../assets/images/slider-image2.png'
 import sliderImage3 from '../assets/images/slider-image.jpg'
 import sliderImage4 from '../assets/images/slider-image.jpg'
 

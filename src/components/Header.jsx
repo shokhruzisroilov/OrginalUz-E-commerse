@@ -17,7 +17,7 @@ function Header() {
 	const logoutHandle = () => {
 		dispatch(logoutUser())
 		removeItem('token')
-		navigate('/')
+		// navigate('/')
 	}
 
 	const handleClick = () => {
