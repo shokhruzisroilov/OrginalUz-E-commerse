@@ -10,6 +10,7 @@ import {
 	getProductDetailsStart,
 	getProductDetailsSuccess,
 } from '../app/features/products/productsSlice'
+import LoaderDetail from '../animation/LoaderDetail'
 
 function ShopingCart() {
 	const { postId } = useParams()
@@ -23,7 +24,7 @@ function ShopingCart() {
 	const getProductDetails = async () => {
 		dispatch(getProductDetailsStart())
 		try {
-			const response = await ProductService.getProductsDetail(slug)
+			const response = await ProductService.getProductsDetail(postId)
 			dispatch(getProductDetailsSuccess(response))
 		} catch (error) {
 			dispatch(getProductDetailsFailure(error))
@@ -69,7 +70,7 @@ function ShopingCart() {
 				</Link>
 			</div>
 			<>
-				{isLoading && <p className='text-center'>Loading...</p>}
+				{isLoading && <LoaderDetail />}
 				{error !== null && <p className='text-center'>Mahsulot topilmadi</p>}
 			</>
 			{!isLoading && !error && (
@@ -87,7 +88,7 @@ function ShopingCart() {
 					</div>
 					<div className='mt-10 lg:0'>
 						<h3 className='text-textColor text-[18px] font-normal '>
-							{productDetail.category}
+							{productDetail.category?.title}
 						</h3>
 						<h2 className='text-textColor sm:text-[28px] text-[24px] font-[400] leading-normal'>
 							{productDetail.title}

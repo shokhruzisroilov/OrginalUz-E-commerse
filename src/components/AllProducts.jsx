@@ -9,11 +9,12 @@ import {
 	getProductsStart,
 	getProductsSuccess,
 } from '../app/features/products/productsSlice'
-import LoaderProduct from '../animation/LoaderProduct/LoaderProduct'
+import LoaderProduct from '../animation/LoaderProduct'
 import NotFount from './ui/NotFount'
 
 function AllProducts() {
 	const { isLoading, products } = useSelector(state => state.products)
+	// console.log(products)
 	const dispatch = useDispatch()
 
 	const getProducts = async () => {
@@ -37,13 +38,7 @@ function AllProducts() {
 			</h2>
 			<Search />
 			<div className='w-full flex items-center justify-center'>
-				{isLoading && (
-					<div className='grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 pt-10'>
-						{Array.from({ length: products.length }, (_, index) => (
-							<LoaderProduct key={index} />
-						))}
-					</div>
-				)}
+				{isLoading && <LoaderProduct />}
 				{!isLoading && products.length === 0 && <NotFount />}
 			</div>
 			<div className='grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 pt-10'>

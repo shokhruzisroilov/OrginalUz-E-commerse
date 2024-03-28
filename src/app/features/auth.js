@@ -7,7 +7,6 @@ const initialState = {
 	errorReg: null,
 	errorLog: null,
 	register: null,
-	login: null,
 }
 
 export const authSlice = createSlice({
@@ -41,7 +40,6 @@ export const authSlice = createSlice({
 			state.errorLog = action.payload
 		},
 		logoutUser: state => {
-			state.login = null
 			state.loggedIn = false
 		},
 	},

@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/pagination'
+
 import { useDispatch, useSelector } from 'react-redux'
 import Categoryservice from '../service/category'
 import { useEffect } from 'react'
@@ -61,7 +62,7 @@ function Category() {
 					}}
 					breakpoints={{
 						320: {
-							slidesPerView: 2,
+							slidesPerView: 1,
 							spaceBetween: 20,
 						},
 						480: {
@@ -87,14 +88,17 @@ function Category() {
 						categories &&
 						categories.map(item => {
 							return (
-								<SwiperSlide className='flex justify-center' key={item.id}>
-									<div className='bg-white max-w-[244px] min-h-max cursor-pointer'>
+								<SwiperSlide
+									className='max-w-[168px] flex justify-center'
+									key={item.id}
+								>
+									<div className='bg-white w-full h-[168px] cursor-pointer'>
 										<img
 											src={item.image}
 											alt={item.title}
-											className='w-full  h-[164px] object-cover'
+											className='w-full h-full object-cover relative'
 										/>
-										<button className='w-full py-2 bg-secondary hover:bg-primary text-primary hover:text-secondary text-[16px] font-[500] '>
+										<button className='w-full absolute bottom-0 left-0 right-0 py-2 bg-secondary hover:bg-primary text-primary hover:text-secondary text-[16px] font-[500] '>
 											{item.title}
 										</button>
 									</div>
