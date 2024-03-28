@@ -8,17 +8,27 @@ import {
 	Error404Page,
 } from './index'
 import { useEffect } from 'react'
-import { getItem } from './heplers/persistanceStorage'
-import { useDispatch, useSelector } from 'react-redux'
-import { refreshLogin } from './app/features/auth'
+import { useDispatch } from 'react-redux'
+import { giveLogin, refreshLogin } from './app/features/auth'
+import AuthService from './service/auth'
 
 function App() {
 	const dispatch = useDispatch()
 
 	const getUser = async () => {
+		try {
+			const response = await AuthService.getUser()
+			dispatch(giveLogin(response))
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
+	const getToken = async () => {
 		dispatch(refreshLogin())
 	}
 	useEffect(() => {
+		getToken()
 		getUser()
 	}, [])
 

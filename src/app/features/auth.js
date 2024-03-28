@@ -7,7 +7,7 @@ const initialState = {
 	errorReg: null,
 	errorLog: null,
 	register: null,
-	// login: null,
+	user: null,
 }
 
 export const authSlice = createSlice({
@@ -33,12 +33,14 @@ export const authSlice = createSlice({
 		loginUserSuccess: (state, action) => {
 			state.loggedIn = true
 			state.isLoading = false
-			// state.login = action.payload
 			setItem('token', action.payload.key)
 		},
 		loginUserFailure: (state, action) => {
 			state.isLoading = false
 			state.errorLog = action.payload
+		},
+		giveLogin: (state, action) => {
+			state.user = action.payload
 		},
 		refreshLogin: state => {
 			const token = getItem('token')
@@ -62,4 +64,5 @@ export const {
 	loginUserFailure,
 	logoutUser,
 	refreshLogin,
+	giveLogin,
 } = authSlice.actions

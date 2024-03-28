@@ -4,15 +4,13 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { humburger, colseMenu } from '../constants/index'
-import { FaRegUser } from 'react-icons/fa'
 import { removeItem } from '../heplers/persistanceStorage'
 import { logoutUser } from '../app/features/auth'
 
 function Header() {
 	const [burger, setBurger] = useState(true)
-	const { loggedIn } = useSelector(store => store.auth)
+	const { loggedIn, user } = useSelector(store => store.auth)
 	const dispatch = useDispatch()
-	const navigate = useNavigate()
 
 	const logoutHandle = () => {
 		dispatch(logoutUser())
@@ -44,7 +42,9 @@ function Header() {
 				</nav>
 				{loggedIn ? (
 					<div className='hidden sm:flex gap-x-[20px] items-center'>
-						<FaRegUser className='text-textColor text-xl cursor-pointer' />
+						<div className={`${styles.btn} ${styles.btnSecondary}`}>
+							{user == null ? '+9989XXXXXXXX' : user?.username}
+						</div>
 						<button
 							className={`${styles.btnPrimary} ${styles.btn}`}
 							onClick={logoutHandle}
@@ -81,7 +81,9 @@ function Header() {
 					</ul>
 					{loggedIn ? (
 						<div className='flex justify-center gap-x-[20px] items-center'>
-							<FaRegUser className='text-textColor text-xl cursor-pointer' />
+							<div className={`${styles.btn} ${styles.btnSecondary}`}>
+								{user == null ? '+9989XXXXXXXX' : user?.username}
+							</div>
 							<button
 								className={`${styles.btnPrimary} ${styles.btn}`}
 								onClick={logoutHandle}

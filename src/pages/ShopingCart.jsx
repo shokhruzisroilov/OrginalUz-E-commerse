@@ -33,7 +33,7 @@ function ShopingCart() {
 
 	useEffect(() => {
 		getProductDetails()
-	}, [slug])
+	}, [])
 
 	const ScrollToTop = () => {
 		useEffect(() => {

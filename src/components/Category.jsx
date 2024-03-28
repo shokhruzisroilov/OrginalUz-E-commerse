@@ -100,7 +100,7 @@ function Category() {
 											alt={item.title}
 											className='w-full h-full object-cover relative'
 										/>
-										<button className='w-full absolute bottom-0 left-0 right-0 py-2 bg-secondary hover:bg-primary text-primary hover:text-secondary text-[16px] font-[500] '>
+										<button className='w-full absolute bottom-0 left-0  right-0 py-2 bg-secondary hover:bg-primary text-primary hover:text-secondary text-[16px] font-[500] '>
 											{item.title}
 										</button>
 									</div>
