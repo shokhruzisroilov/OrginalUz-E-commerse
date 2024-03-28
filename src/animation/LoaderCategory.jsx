@@ -7,14 +7,16 @@ import 'swiper/css/pagination'
 const LoaderCategory = () => {
 	return (
 		<Swiper
-			slidesPerView={1}
-			spaceBetween={10}
 			pagination={{
 				clickable: true,
 			}}
 			breakpoints={{
+				0: {
+					slidesPerView: 2,
+					spaceBetween: 20,
+				},
 				320: {
-					slidesPerView: 1,
+					slidesPerView: 2,
 					spaceBetween: 20,
 				},
 				480: {
@@ -34,6 +36,7 @@ const LoaderCategory = () => {
 					spaceBetween: 50,
 				},
 			}}
+			className='mySwiper'
 		>
 			<SwiperSlide className='max-w-[168px] flex justify-center items-center'>
 				<div className='w-[168px] h-[168px] bg-gray-200 border-[1px] border-gray-300'>

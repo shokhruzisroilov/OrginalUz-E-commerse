@@ -55,14 +55,16 @@ function Category() {
 					{isLoading && <LoaderCategory />}
 				</div>
 				<Swiper
-					slidesPerView={1}
-					spaceBetween={10}
 					pagination={{
 						clickable: true,
 					}}
 					breakpoints={{
+						0: {
+							slidesPerView: 2,
+							spaceBetween: 20,
+						},
 						320: {
-							slidesPerView: 1,
+							slidesPerView: 2,
 							spaceBetween: 20,
 						},
 						480: {
