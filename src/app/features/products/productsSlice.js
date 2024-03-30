@@ -5,6 +5,7 @@ const initialState = {
 	products: [],
 	productDetail: [],
 	error: null,
+	searchStr: '',
 	searchResults: [],
 }
 
@@ -34,6 +35,18 @@ const productsSlice = createSlice({
 			state.isLoading = false
 			state.error = action.payload
 		},
+		onSearch: (state, action) => {
+			state.searchStr = action.payload
+			if (state.searchStr) {
+				state.searchResults = state.products.filter(
+					item =>
+						item.title.toLowerCase().includes(state.searchStr.toLowerCase()) ||
+						item.category.title
+							.toLowerCase()
+							.includes(state.searchStr.toLowerCase())
+				)
+			}
+		},
 	},
 })
 
@@ -45,5 +58,5 @@ export const {
 	getProductDetailsStart,
 	getProductDetailsSuccess,
 	getProductDetailsFailure,
-	searchProduct,
+	onSearch,
 } = productsSlice.actions

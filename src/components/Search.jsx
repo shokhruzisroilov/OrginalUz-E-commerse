@@ -1,8 +1,14 @@
 import { useState } from 'react'
 import { styles } from '../util/style'
 import { useDispatch } from 'react-redux'
+import { onSearch } from '../app/features/products/productsSlice'
 function Search() {
 	const [search, setSearch] = useState('')
+	const dispatch = useDispatch()
+
+	const handleClick = () => {
+		dispatch(onSearch(search))
+	}
 
 	return (
 		<div className='flex justify-center'>
@@ -13,8 +19,16 @@ function Search() {
 					placeholder='Mahsulotlarni izlash...'
 					value={search}
 					onChange={e => setSearch(e.target.value)}
+					onKeyDown={e => {
+						if (e.key === 'Enter') {
+							handleClick()
+						}
+					}}
 				/>
-				<button className={`${styles.btnPrimary} border-none px-6 py-3`}>
+				<button
+					className={`${styles.btnPrimary} border-none px-6 py-3`}
+					onClick={handleClick}
+				>
 					Izlash
 				</button>
 			</div>

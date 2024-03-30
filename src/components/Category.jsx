@@ -91,16 +91,16 @@ function Category() {
 						categories.map(item => {
 							return (
 								<SwiperSlide
-									className='max-w-[168px] flex justify-center'
+									className='max-w-[168px] flex justify-center select-none'
 									key={item.id}
 								>
-									<div className='bg-white w-full h-[168px] cursor-pointer'>
+									<div className='bg-white w-full h-[168px] cursor-pointer transition duration-800 ease-linear hover:scale-90'>
 										<img
 											src={item.image}
 											alt={item.title}
-											className='w-full h-full object-cover relative'
+											className='w-full h-full object-cover relative '
 										/>
-										<button className='w-full absolute bottom-0 left-0  right-0 py-2 bg-secondary hover:bg-primary text-primary hover:text-secondary text-[16px] font-[500] '>
+										<button className='w-full absolute bottom-0 left-0  right-0 py-2 bg-secondary transition duration-400 ease-linear hover:bg-primary text-primary hover:text-secondary text-[16px] font-[500] '>
 											{item.title}
 										</button>
 									</div>
