@@ -1,7 +1,7 @@
-const NotFount = () => {
+const NotFount = ({ name }) => {
 	return (
 		<h2 className='text-center text-textColor sm:text-[24px] text-[16px] font-[400] leading-normal pt-10'>
-			Mahsulotlar bazada topilmadi!
+			{name}
 		</h2>
 	)
 }

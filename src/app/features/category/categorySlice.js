@@ -11,6 +11,7 @@ const categorySlice = createSlice({
 	name: 'category',
 	initialState,
 	reducers: {
+		// getcategory
 		getCategoryStart: state => {
 			state.isLoading = true
 		},

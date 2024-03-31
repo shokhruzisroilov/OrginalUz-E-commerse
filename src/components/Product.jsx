@@ -1,8 +1,6 @@
 import { styles } from '../util/style'
 import { Link } from 'react-router-dom'
 import { bagBuy } from '../constants/index'
-import { useEffect } from 'react'
-import Categoryservice from '../service/category'
 
 function Product({ id, image1, category, title, description, price }) {
 	// description

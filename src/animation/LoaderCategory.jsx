@@ -73,6 +73,11 @@ const LoaderCategory = () => {
 					<div className='h-[120px] bg-white'></div>
 				</div>
 			</SwiperSlide>
+			<SwiperSlide className='max-w-[168px] flex justify-center'>
+				<div className='w-[168px] h-[168px] bg-gray-200 border-[1px] border-gray-300'>
+					<div className='h-[120px] bg-white'></div>
+				</div>
+			</SwiperSlide>
 		</Swiper>
 	)
 }

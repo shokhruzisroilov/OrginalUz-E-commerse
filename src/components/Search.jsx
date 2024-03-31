@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { styles } from '../util/style'
 import { useDispatch } from 'react-redux'
-import { onSearch } from '../app/features/products/productsSlice'
+import { searchedProduct } from '../app/features/products/productsSlice'
 function Search() {
 	const [search, setSearch] = useState('')
 	const dispatch = useDispatch()
 
-	const handleClick = () => {
-		dispatch(onSearch(search))
+	const searchProducts = () => {
+		dispatch(searchedProduct(search))
 	}
 
 	return (
@@ -21,13 +21,13 @@ function Search() {
 					onChange={e => setSearch(e.target.value)}
 					onKeyDown={e => {
 						if (e.key === 'Enter') {
-							handleClick()
+							searchProducts()
 						}
 					}}
 				/>
 				<button
 					className={`${styles.btnPrimary} border-none px-6 py-3`}
-					onClick={handleClick}
+					onClick={searchProducts}
 				>
 					Izlash
 				</button>

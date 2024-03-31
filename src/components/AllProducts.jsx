@@ -13,10 +13,7 @@ import LoaderProduct from '../animation/LoaderProduct'
 import NotFount from './ui/NotFount'
 
 function AllProducts() {
-	const { isLoading, products, searchResults } = useSelector(
-		state => state.products
-	)
-	console.log(searchResults)
+	const { isLoading, products } = useSelector(state => state.products)
 	const dispatch = useDispatch()
 
 	const getProducts = async () => {
@@ -41,16 +38,15 @@ function AllProducts() {
 			<Search />
 			<div className='w-full flex items-center justify-center'>
 				{isLoading && <LoaderProduct />}
-				{!isLoading && products.length === 0 && <NotFount />}
+				{!isLoading && products.length === 0 && (
+					<NotFount name={'Mahsulotlar topilmadi!'} />
+				)}
 			</div>
 			<div className='grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 pt-10'>
-				{!isLoading && searchResults.length === 0
-					? products.map(product => {
-							return <Product key={product.id} {...product} />
-					  })
-					: searchResults.map(product => {
-							return <Product key={product.id} {...product} />
-					  })}
+				{!isLoading &&
+					products.map(product => {
+						return <Product key={product.id} {...product} />
+					})}
 			</div>
 		</div>
 	)

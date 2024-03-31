@@ -1,6 +1,5 @@
 import { styles } from '../util/style'
 import { HashLink } from 'react-router-hash-link'
-//slider
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
 // Import Swiper styles
@@ -8,21 +7,22 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 
 import { useDispatch, useSelector } from 'react-redux'
-import Categoryservice from '../service/category'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import {
 	getCategoryFailure,
 	getCategoryStart,
 	getCategorySuccess,
 } from '../app/features/category/categorySlice'
 import LoaderCategory from '../animation/LoaderCategory'
-// import required modules
+import Categoryservice from '../service/category'
+import { filteredProduct } from '../app/features/products/productsSlice'
 
 function Category() {
-	const { categories, isLoading, error } = useSelector(state => state.category)
-	// console.log(categories)
+	const [filter, setFilter] = useState(null)
+	const { categories, isLoading } = useSelector(state => state.category)
 	const dispatch = useDispatch()
 
+	// getcategory
 	const getCategory = async () => {
 		dispatch(getCategoryStart())
 		try {
@@ -30,13 +30,17 @@ function Category() {
 			dispatch(getCategorySuccess(response))
 		} catch (error) {
 			dispatch(getCategoryFailure(error))
-			console.log(error)
 		}
 	}
-
 	useEffect(() => {
 		getCategory()
 	}, [])
+
+	// filter send slug
+	const filterProducts = slug => {
+		dispatch(filteredProduct(slug))
+		setFilter(slug)
+	}
 
 	return (
 		<div
@@ -51,9 +55,8 @@ function Category() {
 				</button>
 			</HashLink>
 			<div className='pt-5 flex justify-center'>
-				<div className='flex items-center justify-center'>
-					{isLoading && <LoaderCategory />}
-				</div>
+				{/* // LoaderCategory */}
+				{isLoading && <LoaderCategory />}
 				<Swiper
 					pagination={{
 						clickable: true,
@@ -93,6 +96,7 @@ function Category() {
 								<SwiperSlide
 									className='max-w-[168px] flex justify-center select-none'
 									key={item.id}
+									onClick={() => filterProducts(item.id)}
 								>
 									<div className='bg-white w-full h-[168px] cursor-pointer transition duration-800 ease-linear hover:scale-90'>
 										<img
@@ -100,7 +104,13 @@ function Category() {
 											alt={item.title}
 											className='w-full h-full object-cover relative '
 										/>
-										<button className='w-full absolute bottom-0 left-0  right-0 py-2 bg-secondary transition duration-400 ease-linear hover:bg-primary text-primary hover:text-secondary text-[16px] font-[500] '>
+										<button
+											className={`w-full absolute bottom-0 left-0  right-0 py-2  transition duration-400 ease-linear hover:bg-primary  hover:text-secondary text-[16px] font-[500] ${
+												filter === item.id
+													? 'bg-primary text-secondary'
+													: 'bg-secondary text-primary'
+											}`}
+										>
 											{item.title}
 										</button>
 									</div>
