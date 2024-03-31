@@ -2,9 +2,10 @@ import { Fragment } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Dialog, Transition } from '@headlessui/react'
 import { Link } from 'react-router-dom'
-import { handelClick } from '../app/features/state/shopingSlice'
+import { handelClicker } from '../app/features/state/shopingSlice'
 import closeMenu from '../assets/svg/close-menu.svg'
 import { productsData } from '../util/productsData'
+import { MdDelete } from 'react-icons/md'
 
 export default function AddToCart() {
 	const shoping = useSelector(state => state.shoping.active)
@@ -15,7 +16,7 @@ export default function AddToCart() {
 				as='div'
 				className='relative z-10'
 				onClose={dispatch}
-				onClick={() => dispatch(handelClick())}
+				onClick={() => dispatch(handelClicker())}
 			>
 				<Transition.Child
 					as={Fragment}
@@ -52,7 +53,7 @@ export default function AddToCart() {
 													<button
 														type='button'
 														className='-m-2 p-2 text-gray-400 hover:text-gray-500'
-														onClick={() => dispatch(handelClick())}
+														onClick={() => dispatch(handelClicker())}
 													>
 														<span className='sr-only'>Close panel</span>
 														<img
@@ -97,12 +98,7 @@ export default function AddToCart() {
 																	</div>
 																	<div className='flex flex-1 items-end justify-between text-sm'>
 																		<div className='flex'>
-																			<button
-																				type='button'
-																				className='font-medium text-orange-500 hover:text-orange-400'
-																			>
-																				Olib tashlash
-																			</button>
+																			<MdDelete className='text-2xl text-red-400 cursor-pointer' />
 																		</div>
 																	</div>
 																</div>
@@ -136,7 +132,7 @@ export default function AddToCart() {
 														to='/'
 														type='button'
 														className='font-medium text-orange-500 hover:text-orange-400'
-														onClick={() => dispatch(handelClick())}
+														onClick={() => dispatch(handelClicker())}
 													>
 														Xarid qilishda davom eting
 														<span aria-hidden='true'> &rarr;</span>

@@ -1,7 +1,9 @@
 import { Navbar } from '../components/index'
 import { styles } from '../util/style'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import { handelClicker } from '../app/features/state/shopingSlice'
+import payBox from '../assets/svg/pay-box.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import { humburger, colseMenu } from '../constants/index'
 import { removeItem } from '../heplers/persistanceStorage'
@@ -38,11 +40,19 @@ function Header() {
 				<nav className='hidden sm:block'>
 					<ul className='flex items-center gap-x-5'>
 						<Navbar />
+						<li>
+							<img
+								src={payBox}
+								alt='pay box'
+								onClick={() => dispatch(handelClicker())}
+								className='w-5 h-5'
+							/>
+						</li>
 					</ul>
 				</nav>
 				{loggedIn ? (
 					<div className='hidden sm:flex gap-x-[20px] items-center'>
-						<div className={`${styles.btn} ${styles.btnSecondary}`}>
+						<div className=' text-base sm:text-[18px] text-textColor  font-normal leading-normal'>
 							{user == null ? '+9989XXXXXXXX' : user?.username}
 						</div>
 						<button
@@ -65,13 +75,20 @@ function Header() {
 						</Link>
 					</div>
 				)}
-
-				<div className='sm:hidden' onClick={handleClick}>
-					{burger ? (
-						<img src={humburger} alt='humburger-image' className='w-6 h-6' />
-					) : (
-						<img src={colseMenu} alt='humburger-image' className='w-6 h-6' />
-					)}
+				<div className='flex items-center gap-5 sm:hidden'>
+					<img
+						src={payBox}
+						alt='pay box'
+						onClick={() => dispatch(handelClicker())}
+						className='w-5 h-5'
+					/>
+					<div onClick={handleClick}>
+						{burger ? (
+							<img src={humburger} alt='humburger-image' className='w-6 h-6' />
+						) : (
+							<img src={colseMenu} alt='humburger-image' className='w-6 h-6' />
+						)}
+					</div>
 				</div>
 			</div>
 			{!burger ? (
@@ -81,7 +98,7 @@ function Header() {
 					</ul>
 					{loggedIn ? (
 						<div className='flex justify-center gap-x-[20px] items-center'>
-							<div className={`${styles.btn} ${styles.btnSecondary}`}>
+							<div className=' text-base sm:text-[18px] text-textColor  font-normal leading-normal'>
 								{user == null ? '+9989XXXXXXXX' : user?.username}
 							</div>
 							<button
