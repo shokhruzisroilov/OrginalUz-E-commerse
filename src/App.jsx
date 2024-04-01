@@ -8,13 +8,13 @@ import {
 	Error404Page,
 } from './index'
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { giveLogin, refreshLogin } from './app/features/auth'
 import AuthService from './service/auth'
 
 function App() {
+	const { loggedIn } = useSelector(store => store.auth)
 	const dispatch = useDispatch()
-
 	const getUser = async () => {
 		try {
 			const response = await AuthService.getUser()
@@ -30,7 +30,7 @@ function App() {
 	useEffect(() => {
 		getToken()
 		getUser()
-	}, [])
+	}, [loggedIn])
 
 	return (
 		<>

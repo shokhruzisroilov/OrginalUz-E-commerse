@@ -1,6 +1,6 @@
 import { styles } from '../util/style'
 import { Link, useParams } from 'react-router-dom'
-import { AddToCart } from '../components'
+import { AddToCart, DetailText } from '../components'
 import Slider from '../components/Slider'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -11,6 +11,14 @@ import {
 	getProductDetailsSuccess,
 } from '../app/features/products/productsSlice'
 import LoaderDetail from '../animation/LoaderDetail'
+
+import { IoIosResize } from 'react-icons/io'
+import {
+	MdOutlineHighQuality,
+	MdOutlinePriceChange,
+	MdOutlineRealEstateAgent,
+} from 'react-icons/md'
+import { TbTruckDelivery } from 'react-icons/tb'
 
 function ShopingCart() {
 	const { postId } = useParams()
@@ -33,7 +41,7 @@ function ShopingCart() {
 
 	useEffect(() => {
 		getProductDetails()
-	}, [])
+	}, [postId])
 
 	const ScrollToTop = () => {
 		useEffect(() => {
@@ -43,7 +51,7 @@ function ShopingCart() {
 	}
 
 	return (
-		<div className='w-full my-[100px] bg-mainBg'>
+		<div className='w-full mt-[75px] bg-mainBg'>
 			<ScrollToTop />
 			<div className={`${styles.container} pt-4 flex items-start`}>
 				<Link
@@ -75,7 +83,7 @@ function ShopingCart() {
 			</>
 			{!isLoading && !error && (
 				<div
-					className={`${styles.container} sm:flex items-start gap-10  lg:gap-y-20 lg:gap-x-[120px] pt-10 overflow-hidden`}
+					className={`${styles.container} sm:flex items-start gap-10  lg:gap-y-20 lg:gap-x-[120px] py-10 overflow-hidden`}
 				>
 					<div className='lg:w-[500px] sm:w-[400px] select-none'>
 						<Slider
@@ -96,9 +104,24 @@ function ShopingCart() {
 						<p className='text-textColor text-[16px] font-light py-2'>
 							{productDetail.description}
 						</p>
-						<p className='py-1'>{productDetail.size}</p>
-						<p className='py-1'>Narxi: {productDetail.price} so'm</p>
-						<p className='py-1'>{productDetail.state}</p>
+
+						<DetailText title={productDetail.size} icon={<IoIosResize />} />
+						<DetailText
+							title={'Sifat: Yuqori'}
+							icon={<MdOutlineHighQuality />}
+						/>
+						<DetailText
+							title={productDetail.state}
+							icon={<MdOutlineRealEstateAgent />}
+						/>
+						<DetailText
+							title={`Narxi: ${productDetail.price} so'm`}
+							icon={<MdOutlinePriceChange />}
+						/>
+						<DetailText
+							title={"Yetkazib berish: Yurtimiz bo'ylab bepul!"}
+							icon={<TbTruckDelivery />}
+						/>
 						<button className='w-full flex items-center justify-center rounded-md border border-transparent bg-orange-400 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-orange-300 mt-6'>
 							Savatga qo'shish
 						</button>

@@ -18,15 +18,11 @@ function Header() {
 	const logoutHandle = () => {
 		dispatch(logoutUser())
 		removeItem('token')
-		// navigate('/')
 	}
 
 	const handleClick = () => {
 		setBurger(!burger)
 	}
-
-	const clazz = `${styles.styleNav}`
-	const activeClazz = `${styles.styleNavActive}`
 
 	return (
 		<header className='w-full bg-white shadow-shadowHead fixed top-0 z-10'>
@@ -54,7 +50,13 @@ function Header() {
 				{loggedIn ? (
 					<div className='hidden sm:flex gap-x-[20px] items-center'>
 						<div className=' text-base sm:text-[18px] text-textColor  font-normal leading-normal'>
-							{user == null ? '+9989XXXXXXXX' : user?.username}
+							<div className='w-40 text-center'>
+								{user === null ? (
+									<div class='w-full h-8 border-[1px] border-gray-200 rounded col-span-2'></div>
+								) : (
+									user?.username
+								)}
+							</div>
 						</div>
 						<button
 							className={`${styles.btnPrimary} ${styles.btn}`}
@@ -100,7 +102,13 @@ function Header() {
 					{loggedIn ? (
 						<div className='flex justify-center gap-x-[20px] items-center'>
 							<div className=' text-base sm:text-[18px] text-textColor  font-normal leading-normal'>
-								{user == null ? '+9989XXXXXXXX' : user?.username}
+								<div className='w-40 text-center'>
+									{user === null ? (
+										<div class='w-full h-8 border-[1px] border-gray-200 rounded col-span-2'></div>
+									) : (
+										user?.username
+									)}
+								</div>
 							</div>
 							<button
 								className={`${styles.btnPrimary} ${styles.btn}`}

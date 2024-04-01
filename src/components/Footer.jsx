@@ -10,21 +10,21 @@ import {
 	YoutebeIcon,
 	InstagramIcon,
 } from '../util/icons'
-import logo from '../assets/icons/logo.uz.png'
+import logo from '../assets/icons/logo.uz-removebg.png'
 
 function Footer() {
 	return (
-		<footer className={`${styles.container} bg-white`}>
+		<footer className={`${styles.container} bg-mainBg`}>
 			<div className='mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8'>
 				<div className='sm:flex sm:justify-between'>
 					<div className='mb-6 md:mb-0'>
-						<Link
+						<div
 							to='/'
 							className='flex flex-col gap-y-10 justify-start items-start'
 						>
 							<div className='flex items-center justify-start'>
 								<Link to='/'>
-									<img src={logo} alt='' className='w-40 ' />
+									<img src={logo} alt='logo' className='w-40 h-20 bg-mainBg' />
 								</Link>
 							</div>
 							<div className='sm:flex-row flex flex-col gap-4 '>
@@ -47,7 +47,7 @@ function Footer() {
 									</div>
 								</div>
 							</div>
-						</Link>
+						</div>
 					</div>
 					<div className='grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-2 max-sl:grid-cols-1'>
 						<div>
