@@ -3,11 +3,12 @@ import { styles } from '../util/style'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { handelClicker } from '../app/features/state/shopingSlice'
-import payBox from '../assets/svg/pay-box.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import { humburger, colseMenu } from '../constants/index'
 import { removeItem } from '../heplers/persistanceStorage'
 import { logoutUser } from '../app/features/auth'
+import payBox from '../assets/svg/pay-box.svg'
+import logo from '../assets/icons/logo.uz.png'
 
 function Header() {
 	const [burger, setBurger] = useState(true)
@@ -33,9 +34,9 @@ function Header() {
 				className={`${styles.container} h-[75px] flex justify-between items-center`}
 			>
 				<div>
-					<span className='self-center text-xl sm:text-2xl whitespace-nowrap text-textColor  font-[500] leading-normal'>
-						<Link to='/'>Dreams Shop</Link>
-					</span>
+					<Link to='/'>
+						<img src={logo} alt='' className='w-40' />
+					</Link>
 				</div>
 				<nav className='hidden sm:block'>
 					<ul className='flex items-center gap-x-5'>

@@ -3,12 +3,6 @@ import { Link } from 'react-router-dom'
 import { bagBuy } from '../constants/index'
 
 function Product({ id, image1, category, title, description, price }) {
-	// const slicePrice = price.toString().split('')
-	// const priceRes = slicePrice.map((item) => {
-	// 	return item.slice
-	// })
-	// console.log(slicePrice)
-
 	// title
 	const sliceTitle = title.length >= 60 ? title.slice(0, 60) + '...' : title
 	// description

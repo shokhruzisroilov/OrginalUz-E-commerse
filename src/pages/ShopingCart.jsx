@@ -19,6 +19,7 @@ function ShopingCart() {
 	const { isLoading, productDetail, error } = useSelector(
 		state => state.products
 	)
+	console.log(productDetail)
 
 	const getProductDetails = async () => {
 		dispatch(getProductDetailsStart())
@@ -95,17 +96,12 @@ function ShopingCart() {
 						<p className='text-textColor text-[16px] font-light py-2'>
 							{productDetail.description}
 						</p>
-						<p className='py-2'>Narxi: {productDetail.price} so'm</p>
-						<form className='mt-6'>
-							{/* <input
-								type='number'
-								className='px-2 py-2 border-solid border-[2px] border-textColor rounded-md'
-								placeholder='1'
-							/> */}
-							<button className='w-full flex items-center justify-center rounded-md border border-transparent bg-orange-400 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-orange-300 mt-6'>
-								Savatga qo'shish
-							</button>
-						</form>
+						<p className='py-1'>{productDetail.size}</p>
+						<p className='py-1'>Narxi: {productDetail.price} so'm</p>
+						<p className='py-1'>{productDetail.state}</p>
+						<button className='w-full flex items-center justify-center rounded-md border border-transparent bg-orange-400 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-orange-300 mt-6'>
+							Savatga qo'shish
+						</button>
 					</div>
 				</div>
 			)}

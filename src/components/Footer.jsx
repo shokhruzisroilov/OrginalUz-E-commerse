@@ -10,10 +10,11 @@ import {
 	YoutebeIcon,
 	InstagramIcon,
 } from '../util/icons'
+import logo from '../assets/icons/logo.uz.png'
 
 function Footer() {
 	return (
-		<footer className={`${styles.container} bg-mainBg`}>
+		<footer className={`${styles.container} bg-white`}>
 			<div className='mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8'>
 				<div className='sm:flex sm:justify-between'>
 					<div className='mb-6 md:mb-0'>
@@ -22,9 +23,9 @@ function Footer() {
 							className='flex flex-col gap-y-10 justify-start items-start'
 						>
 							<div className='flex items-center justify-start'>
-								<span className='self-center text-xl sm:text-2xl whitespace-nowrap text-textColor  font-[500] leading-normal'>
-									Dreams Shop
-								</span>
+								<Link to='/'>
+									<img src={logo} alt='' className='w-40 ' />
+								</Link>
 							</div>
 							<div className='sm:flex-row flex flex-col gap-4 '>
 								<div className='w-full sm:w-auto bg-orange-500 hover:bg-orange-400 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 '>
@@ -100,12 +101,12 @@ function Footer() {
 					<span className='text-sm text-gray-500 sm:text-center dark:text-gray-400'>
 						© 2024{' '}
 						<Link to='/' className='hover:underline'>
-							OrginalUz{' '}
+							Dreams Shop{' '}
 						</Link>
 						tomonidan barcha huquqlar himoyalangan
 					</span>
 					<div className='flex mt-4 space-x-5 sm:justify-center sm:mt-0'>
-						<Link to='/' className='text-gray-500 hover:text-gray-900'>
+						<Link to='/' className='text-gray-500 hover:text-gray-900 '>
 							<FacebookIcon />
 						</Link>
 						<Link to='/' className='text-gray-500 hover:text-gray-900 '>
