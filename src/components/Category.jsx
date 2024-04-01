@@ -102,7 +102,7 @@ function Category() {
 										<img
 											src={item.image}
 											alt={item.title}
-											className='w-full h-full object-cover relative '
+											className='w-full h-[130px] object-cover relative'
 										/>
 										<button
 											className={`w-full absolute bottom-0 left-0  right-0 py-2  transition duration-400 ease-linear hover:bg-primary  hover:text-secondary text-[16px] font-[500] ${

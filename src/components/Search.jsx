@@ -8,6 +8,7 @@ function Search() {
 
 	const searchProducts = () => {
 		dispatch(searchedProduct(search))
+		setSearch('')
 	}
 
 	return (

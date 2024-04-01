@@ -9,10 +9,9 @@ import 'swiper/css/navigation'
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 //import slider image
-import sliderImage from '../assets/images/slider-image.jpg'
-import sliderImage2 from '../assets/images/slider-image2.png'
-import sliderImage3 from '../assets/images/slider-image.jpg'
-import sliderImage4 from '../assets/images/slider-image.jpg'
+import sliderImage1 from '../assets/images/slider-image1.jpg'
+import sliderImage2 from '../assets/images/slider-image2.jpg'
+import sliderImage3 from '../assets/images/slider-image3.jpg'
 
 export default function Carousel() {
 	return (
@@ -35,16 +34,13 @@ export default function Carousel() {
 				className='mySwiper'
 			>
 				<SwiperSlide className='w-full h-[240px]'>
-					<img src={sliderImage} alt='' className={`${styles.sliderImage}`} />
+					<img src={sliderImage1} alt='' className={`${styles.sliderImage}`} />
 				</SwiperSlide>
 				<SwiperSlide className='w-full h-[240px]'>
 					<img src={sliderImage2} alt='' className={`${styles.sliderImage}`} />
 				</SwiperSlide>
 				<SwiperSlide className='w-full h-[240px]'>
 					<img src={sliderImage3} alt='' className={`${styles.sliderImage}`} />
-				</SwiperSlide>
-				<SwiperSlide className='w-full h-[240px]'>
-					<img src={sliderImage4} alt='' className={`${styles.sliderImage}`} />
 				</SwiperSlide>
 			</Swiper>
 		</div>

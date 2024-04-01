@@ -3,9 +3,17 @@ import { Link } from 'react-router-dom'
 import { bagBuy } from '../constants/index'
 
 function Product({ id, image1, category, title, description, price }) {
+	// const slicePrice = price.toString().split('')
+	// const priceRes = slicePrice.map((item) => {
+	// 	return item.slice
+	// })
+	// console.log(slicePrice)
+
+	// title
+	const sliceTitle = title.length >= 60 ? title.slice(0, 60) + '...' : title
 	// description
 	const sliceDescription =
-		description.length >= 70 ? description.slice(0, 70) + '...' : title
+		description.length >= 70 ? description.slice(0, 70) + '...' : description
 
 	return (
 		<Link to={`/shoping/${id}`}>
@@ -19,7 +27,7 @@ function Product({ id, image1, category, title, description, price }) {
 					{category.title}
 				</h4>
 				<h3 className='text-textColor text-[16px] font-normal leading-[150%]'>
-					{title}
+					{sliceTitle}
 				</h3>
 				<p className='text-textColor text-[12px] font-light'>
 					{sliceDescription}
