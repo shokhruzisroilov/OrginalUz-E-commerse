@@ -22,6 +22,7 @@ import { TbTruckDelivery } from 'react-icons/tb'
 
 function ShopingCart() {
 	const { postId } = useParams()
+	console.log(postId)
 	const dispatch = useDispatch()
 
 	const { isLoading, productDetail, error } = useSelector(
