@@ -27,7 +27,6 @@ function ShopingCart() {
 	const { isLoading, productDetail, error } = useSelector(
 		state => state.products
 	)
-	console.log(productDetail)
 
 	const getProductDetails = async () => {
 		dispatch(getProductDetailsStart())
@@ -81,7 +80,7 @@ function ShopingCart() {
 				{isLoading && <LoaderDetail />}
 				{error !== null && <p className='text-center'>Mahsulot topilmadi</p>}
 			</>
-			{!isLoading && !error && (
+			{!isLoading && !error && productDetail && (
 				<div
 					className={`${styles.container} sm:flex items-start gap-10  lg:gap-y-20 lg:gap-x-[120px] py-10 overflow-hidden`}
 				>
