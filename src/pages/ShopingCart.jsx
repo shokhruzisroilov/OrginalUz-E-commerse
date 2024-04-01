@@ -13,16 +13,15 @@ import {
 import LoaderDetail from '../animation/LoaderDetail'
 
 import { IoIosResize } from 'react-icons/io'
+import { TbTruckDelivery } from 'react-icons/tb'
 import {
 	MdOutlineHighQuality,
 	MdOutlinePriceChange,
 	MdOutlineRealEstateAgent,
 } from 'react-icons/md'
-import { TbTruckDelivery } from 'react-icons/tb'
 
 function ShopingCart() {
 	const { postId } = useParams()
-	console.log(postId)
 	const dispatch = useDispatch()
 
 	const { isLoading, productDetail, error } = useSelector(
