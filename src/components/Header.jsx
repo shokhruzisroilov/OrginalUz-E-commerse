@@ -37,14 +37,16 @@ function Header() {
 				<nav className='hidden sm:block'>
 					<ul className='flex items-center gap-x-5'>
 						<Navbar />
-						<li>
-							<img
-								src={payBox}
-								alt='pay box'
-								onClick={() => dispatch(handelClicker())}
-								className='w-5 h-5'
-							/>
-						</li>
+						{loggedIn && (
+							<li>
+								<img
+									src={payBox}
+									alt='pay box'
+									onClick={() => dispatch(handelClicker())}
+									className='w-5 h-5'
+								/>
+							</li>
+						)}
 					</ul>
 				</nav>
 				{loggedIn ? (
@@ -52,7 +54,7 @@ function Header() {
 						<div className=' text-base sm:text-[18px] text-textColor  font-normal leading-normal'>
 							<div className='w-40 text-center'>
 								{user === null ? (
-									<div class='w-full h-8 border-[1px] border-gray-200 rounded col-span-2'></div>
+									<div className='w-full h-8 border-[1px] border-gray-200 rounded col-span-2'></div>
 								) : (
 									user?.username
 								)}
@@ -62,7 +64,7 @@ function Header() {
 							className={`${styles.btnPrimary} ${styles.btn}`}
 							onClick={logoutHandle}
 						>
-							Logout
+							Chiqish
 						</button>
 					</div>
 				) : (
@@ -79,12 +81,15 @@ function Header() {
 					</div>
 				)}
 				<div className='flex items-center gap-5 sm:hidden'>
-					<img
-						src={payBox}
-						alt='pay box'
-						onClick={() => dispatch(handelClicker())}
-						className='w-5 h-5'
-					/>
+					{loggedIn && (
+						<img
+							src={payBox}
+							alt='pay box'
+							onClick={() => dispatch(handelClicker())}
+							className='w-5 h-5'
+						/>
+					)}
+
 					<div onClick={handleClick}>
 						{burger ? (
 							<img src={humburger} alt='humburger-image' className='w-6 h-6' />
@@ -104,7 +109,7 @@ function Header() {
 							<div className=' text-base sm:text-[18px] text-textColor  font-normal leading-normal'>
 								<div className='w-40 text-center'>
 									{user === null ? (
-										<div class='w-full h-8 border-[1px] border-gray-200 rounded col-span-2'></div>
+										<div className='w-full h-8 border-[1px] border-gray-200 rounded col-span-2'></div>
 									) : (
 										user?.username
 									)}
@@ -114,7 +119,7 @@ function Header() {
 								className={`${styles.btnPrimary} ${styles.btn}`}
 								onClick={logoutHandle}
 							>
-								Logout
+								Chiqish
 							</button>
 						</div>
 					) : (

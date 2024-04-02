@@ -1,5 +1,5 @@
 import { styles } from '../util/style'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { AddToCart, DetailText } from '../components'
 import Slider from '../components/Slider'
 import { useEffect } from 'react'
@@ -23,10 +23,12 @@ import {
 function ShopingCart() {
 	const { postId } = useParams()
 	const dispatch = useDispatch()
+	const navigate = useNavigate()
 
 	const { isLoading, productDetail, error } = useSelector(
 		state => state.products
 	)
+	const { loggedIn } = useSelector(state => state.auth)
 
 	const getProductDetails = async () => {
 		dispatch(getProductDetailsStart())
@@ -41,6 +43,14 @@ function ShopingCart() {
 	useEffect(() => {
 		getProductDetails()
 	}, [postId])
+
+	const addToCartProduct = () => {
+		if (!loggedIn) {
+			navigate('/login')
+		} else {
+			console.log('hello')
+		}
+	}
 
 	const ScrollToTop = () => {
 		useEffect(() => {
@@ -121,7 +131,11 @@ function ShopingCart() {
 							title={"Yetkazib berish: Yurtimiz bo'ylab bepul!"}
 							icon={<TbTruckDelivery />}
 						/>
-						<button className='w-full flex items-center justify-center rounded-md border border-transparent bg-orange-400 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-orange-300 mt-6'>
+						<button
+							className='w-full flex items-center justify-center rounded-md border border-transparent bg-orange-400 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-orange-300 mt-6'
+							type='submit'
+							onClick={addToCartProduct}
+						>
 							Savatga qo'shish
 						</button>
 					</div>

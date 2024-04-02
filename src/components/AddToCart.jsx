@@ -1,15 +1,38 @@
-import { Fragment } from 'react'
+import { Fragment, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Dialog, Transition } from '@headlessui/react'
 import { Link } from 'react-router-dom'
 import { handelClicker } from '../app/features/state/shopingSlice'
 import closeMenu from '../assets/svg/close-menu.svg'
-import { productsData } from '../util/productsData'
 import { MdDelete } from 'react-icons/md'
+import BasketsService from '../service/basket'
+import {
+	getBasketFailure,
+	getBasketStart,
+	getBasketSuccess,
+} from '../app/features/basket/basketSlice'
 
 export default function AddToCart() {
 	const shoping = useSelector(state => state.shoping.active)
+	const { baskets, isLoading, error } = useSelector(state => state.baskets)
+
 	const dispatch = useDispatch()
+
+	const getBaskets = async () => {
+		dispatch(getBasketStart())
+		try {
+			const response = await BasketsService.getBaskets()
+			dispatch(getBasketSuccess(response))
+		} catch (error) {
+			dispatch(getBasketFailure(error))
+			console.log(error)
+		}
+	}
+
+	useEffect(() => {
+		getBaskets()
+	}, [])
+
 	return (
 		<Transition.Root show={shoping} as={Fragment}>
 			<Dialog
@@ -72,28 +95,31 @@ export default function AddToCart() {
 														role='list'
 														className='-my-6 divide-y divide-gray-200'
 													>
-														{productsData.map(product => (
-															<li key={product.id} className='flex py-6'>
-																<div className='h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200'>
-																	<img
-																		src={product.image}
-																		alt={product.name}
-																		className='h-full w-full object-cover object-center'
-																	/>
-																</div>
+														{baskets.map(basket => (
+															<li key={basket.id} className='flex py-6'>
+																<Link
+																	to={`/shoping/${basket.product.id}`}
+																	onClick={() => dispatch(handelClicker())}
+																>
+																	<div className='h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200'>
+																		<img
+																			src={basket.product.image1}
+																			alt={basket.product.title}
+																			className='h-full w-full object-cover object-center'
+																		/>
+																	</div>
+																</Link>
 
 																<div className='ml-4 flex flex-1 flex-col'>
 																	<div>
 																		<div className='flex justify-between text-base font-medium text-gray-900'>
-																			<h3>
-																				<Link to={product.href}>
-																					{product.name}
-																				</Link>
-																			</h3>
-																			<p className='ml-4'>{product.price}</p>
+																			<h3>{basket.product.title}</h3>
+																			<p className='ml-4'>
+																				{basket.product.price} so'm
+																			</p>
 																		</div>
 																		<p className='mt-1 text-sm text-gray-500'>
-																			{product.type}
+																			{basket.product.category.title}
 																		</p>
 																	</div>
 																	<div className='flex flex-1 items-end justify-between text-sm'>
@@ -114,9 +140,6 @@ export default function AddToCart() {
 												<p>Umumiy narxi</p>
 												<p>$262.00</p>
 											</div>
-											{/* <p className='mt-0.5 text-sm text-gray-500'>
-												Shipping and taxes calculated at checkout.
-											</p> */}
 											<div className='mt-6'>
 												<Link
 													to='/'
@@ -134,8 +157,8 @@ export default function AddToCart() {
 														className='font-medium text-orange-500 hover:text-orange-400'
 														onClick={() => dispatch(handelClicker())}
 													>
-														Xarid qilishda davom eting
-														<span aria-hidden='true'> &rarr;</span>
+														<span aria-hidden='true'> &rarr;</span> Xarid
+														qilishda davom eting
 													</Link>
 												</p>
 											</div>
