@@ -14,10 +14,12 @@ import {
 
 export default function AddToCart() {
 	const shoping = useSelector(state => state.shoping.active)
-	const { baskets, isLoading, error } = useSelector(state => state.baskets)
-
+	const { baskets, isLoadingBasket, errorBasket, basketMessage } = useSelector(
+		state => state.baskets
+	)
 	const dispatch = useDispatch()
 
+	// get basket
 	const getBaskets = async () => {
 		dispatch(getBasketStart())
 		try {
@@ -31,15 +33,24 @@ export default function AddToCart() {
 
 	useEffect(() => {
 		getBaskets()
-	}, [])
+	}, [basketMessage])
+
+	// delete basket
+	const deleteBasket = async slug => {
+		try {
+			await BasketsService.deleteBasket(slug)
+			getBaskets()
+		} catch (error) {
+			console.log(error)
+		}
+	}
 
 	return (
 		<Transition.Root show={shoping} as={Fragment}>
 			<Dialog
 				as='div'
 				className='relative z-10'
-				onClose={dispatch}
-				onClick={() => dispatch(handelClicker())}
+				onClose={() => dispatch(handelClicker())}
 			>
 				<Transition.Child
 					as={Fragment}
@@ -95,41 +106,59 @@ export default function AddToCart() {
 														role='list'
 														className='-my-6 divide-y divide-gray-200'
 													>
-														{baskets.map(basket => (
-															<li key={basket.id} className='flex py-6'>
-																<Link
-																	to={`/shoping/${basket.product.id}`}
-																	onClick={() => dispatch(handelClicker())}
+														{isLoadingBasket ? (
+															<div className='flex items-center justify-center'>
+																<div
+																	className='inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] text-orange-400'
+																	role='status'
 																>
-																	<div className='h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200'>
-																		<img
-																			src={basket.product.image1}
-																			alt={basket.product.title}
-																			className='h-full w-full object-cover object-center'
-																		/>
-																	</div>
-																</Link>
+																	<span className='!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]'>
+																		Loading...
+																	</span>
+																</div>
+															</div>
+														) : (
+															baskets.map(basket => (
+																<li key={basket.id} className='flex py-6'>
+																	<Link
+																		to={`/shoping/${basket.product.id}`}
+																		onClick={() => dispatch(handelClicker())}
+																	>
+																		<div className='h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200'>
+																			<img
+																				src={basket.product.image1}
+																				alt={basket.product.title}
+																				className='h-full w-full object-cover object-center'
+																			/>
+																		</div>
+																	</Link>
 
-																<div className='ml-4 flex flex-1 flex-col'>
-																	<div>
-																		<div className='flex justify-between text-base font-medium text-gray-900'>
-																			<h3>{basket.product.title}</h3>
-																			<p className='ml-4'>
-																				{basket.product.price} so'm
+																	<div className='ml-4 flex flex-1 flex-col'>
+																		<div>
+																			<div className='flex justify-between text-base font-medium text-gray-900'>
+																				<h3>{basket.product.title}</h3>
+																				<p className='ml-4'>
+																					{basket.product.price} so'm
+																				</p>
+																			</div>
+																			<p className='mt-1 text-sm text-gray-500'>
+																				{basket.product.category.title}
 																			</p>
 																		</div>
-																		<p className='mt-1 text-sm text-gray-500'>
-																			{basket.product.category.title}
-																		</p>
-																	</div>
-																	<div className='flex flex-1 items-end justify-between text-sm'>
-																		<div className='flex'>
-																			<MdDelete className='text-2xl text-red-400 cursor-pointer' />
+																		<div className='flex flex-1 items-end justify-between text-sm'>
+																			<div className='flex'>
+																				<MdDelete
+																					className='text-2xl text-red-400 cursor-pointer'
+																					onClick={() =>
+																						deleteBasket(basket.id)
+																					}
+																				/>
+																			</div>
 																		</div>
 																	</div>
-																</div>
-															</li>
-														))}
+																</li>
+															))
+														)}
 													</ul>
 												</div>
 											</div>

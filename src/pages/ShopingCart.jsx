@@ -19,6 +19,16 @@ import {
 	MdOutlinePriceChange,
 	MdOutlineRealEstateAgent,
 } from 'react-icons/md'
+import BasketsService from '../service/basket'
+import {
+	addBasketFailure,
+	addBasketStart,
+	addBasketSuccess,
+} from '../app/features/basket/basketSlice'
+
+// alert message
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function ShopingCart() {
 	const { postId } = useParams()
@@ -29,6 +39,9 @@ function ShopingCart() {
 		state => state.products
 	)
 	const { loggedIn } = useSelector(state => state.auth)
+	const { basketMessage, isLoadingBasket, errorBasket } = useSelector(
+		state => state.baskets
+	)
 
 	const getProductDetails = async () => {
 		dispatch(getProductDetailsStart())
@@ -44,11 +57,23 @@ function ShopingCart() {
 		getProductDetails()
 	}, [postId])
 
-	const addToCartProduct = () => {
+	const addProductBasket = async slug => {
+		dispatch(addBasketStart())
+		try {
+			const response = await BasketsService.addProductBasket(slug)
+			dispatch(addBasketSuccess(response))
+		} catch (error) {
+			dispatch(addBasketFailure(error))
+			console.log(errorBasket)
+		}
+	}
+
+	const addToCartProduct = id => {
 		if (!loggedIn) {
 			navigate('/login')
 		} else {
-			console.log('hello')
+			addProductBasket(id)
+			toast.success("Mahsulot savatga qo'shildi!")
 		}
 	}
 
@@ -62,6 +87,7 @@ function ShopingCart() {
 	return (
 		<div className='w-full mt-[75px] bg-mainBg'>
 			<ScrollToTop />
+			<ToastContainer />
 			<div className={`${styles.container} pt-4 flex items-start`}>
 				<Link
 					to='/'
@@ -134,9 +160,10 @@ function ShopingCart() {
 						<button
 							className='w-full flex items-center justify-center rounded-md border border-transparent bg-orange-400 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-orange-300 mt-6'
 							type='submit'
-							onClick={addToCartProduct}
+							disabled={isLoadingBasket}
+							onClick={() => addToCartProduct(productDetail.id)}
 						>
-							Savatga qo'shish
+							{isLoadingBasket ? 'Yuklanmoqda...' : "Savatga qo'shish"}
 						</button>
 					</div>
 				</div>
