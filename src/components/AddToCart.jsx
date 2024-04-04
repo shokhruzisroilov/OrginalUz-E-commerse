@@ -44,6 +44,15 @@ export default function AddToCart() {
 			console.log(error)
 		}
 	}
+	// total price function
+	const totalPrice = () => {
+		let total = 0
+		baskets &&
+			baskets.map(basket => {
+				total += basket.product.price
+			})
+		return total
+	}
 
 	return (
 		<Transition.Root show={shoping} as={Fragment}>
@@ -167,7 +176,7 @@ export default function AddToCart() {
 										<div className='border-t border-gray-200 px-4 py-6 sm:px-6'>
 											<div className='flex justify-between text-base font-medium text-gray-900'>
 												<p>Umumiy narxi</p>
-												<p>$262.00</p>
+												<p>{totalPrice()} so'm</p>
 											</div>
 											<div className='mt-6'>
 												<Link
