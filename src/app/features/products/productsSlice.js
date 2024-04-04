@@ -41,8 +41,10 @@ const productsSlice = createSlice({
 		searchedProduct: (state, action) => {
 			state.products = state.searchResults.filter(
 				product =>
-					product.title.toLowerCase().includes(action.payload) ||
-					product.category.title.toLowerCase().includes(action.payload)
+					product.title.toLowerCase().includes(action.payload.toLowerCase()) ||
+					product.category.title
+						.toLowerCase()
+						.includes(action.payload.toLowerCase())
 			)
 		},
 		// productSearch
