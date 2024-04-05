@@ -11,12 +11,17 @@ import {
 	getBasketStart,
 	getBasketSuccess,
 } from '../app/features/basket/basketSlice'
+import ProductService from '../service/products'
+import { createProductsOrder } from '../app/features/products/productsSlice'
 
 export default function AddToCart() {
 	const shoping = useSelector(state => state.shoping.active)
 	const { baskets, isLoadingBasket, errorBasket, basketMessage } = useSelector(
 		state => state.baskets
 	)
+	const { orderProducts } = useSelector(state => state.products)
+	// console.log(orderProducts)
+
 	const dispatch = useDispatch()
 
 	// get basket
@@ -52,6 +57,17 @@ export default function AddToCart() {
 				total += basket.product.price
 			})
 		return total
+	}
+
+	// create products order
+	const createProductOrder = async () => {
+		try {
+			const response = await ProductService.createProductOrder()
+			dispatch(createProductsOrder(response))
+			getBaskets()
+		} catch (error) {
+			console.log(error)
+		}
 	}
 
 	return (
@@ -168,6 +184,13 @@ export default function AddToCart() {
 																</li>
 															))
 														)}
+														{baskets.length === 0 && orderProducts !== null && (
+															<div className='py-5 w-full flex items-center justify-center'>
+																<p className='font-medium text-gray-500'>
+																	{orderProducts}
+																</p>
+															</div>
+														)}
 													</ul>
 												</div>
 											</div>
@@ -179,12 +202,13 @@ export default function AddToCart() {
 												<p>{totalPrice()} so'm</p>
 											</div>
 											<div className='mt-6'>
-												<Link
-													to='/'
-													className='flex items-center justify-center rounded-md border border-transparent bg-orange-400 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-orange-300'
+												<button
+													type='submit'
+													className='w-full flex items-center justify-center rounded-md border border-transparent bg-orange-400 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-orange-300'
+													onClick={createProductOrder}
 												>
 													Sotib olish
-												</Link>
+												</button>
 											</div>
 											<div className='mt-6 flex justify-center text-center text-sm text-gray-500'>
 												<p>

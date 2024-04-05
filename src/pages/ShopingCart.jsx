@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ProductService from '../service/products'
 import {
+	createProductsOrder,
 	getProductDetailsFailure,
 	getProductDetailsStart,
 	getProductDetailsSuccess,
@@ -39,9 +40,7 @@ function ShopingCart() {
 		state => state.products
 	)
 	const { loggedIn } = useSelector(state => state.auth)
-	const { basketMessage, isLoadingBasket, errorBasket } = useSelector(
-		state => state.baskets
-	)
+	const { isLoadingBasket, errorBasket } = useSelector(state => state.baskets)
 
 	const getProductDetails = async () => {
 		dispatch(getProductDetailsStart())
@@ -62,6 +61,7 @@ function ShopingCart() {
 		try {
 			const response = await BasketsService.addProductBasket(slug)
 			dispatch(addBasketSuccess(response))
+			dispatch(createProductsOrder(null))
 		} catch (error) {
 			dispatch(addBasketFailure(error))
 			console.log(errorBasket)

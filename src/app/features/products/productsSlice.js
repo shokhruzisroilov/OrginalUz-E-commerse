@@ -7,6 +7,7 @@ const initialState = {
 	error: null,
 	searchResults: [],
 	filterProducts: [],
+	orderProducts: null,
 }
 
 const productsSlice = createSlice({
@@ -47,11 +48,15 @@ const productsSlice = createSlice({
 						.includes(action.payload.toLowerCase())
 			)
 		},
-		// productSearch
+		// productFilter
 		filteredProduct: (state, action) => {
 			state.products = state.filterProducts.filter(
 				product => product.category.id === action.payload
 			)
+		},
+		// createProductOrder
+		createProductsOrder: (state, action) => {
+			state.orderProducts = action.payload
 		},
 	},
 })
@@ -66,4 +71,5 @@ export const {
 	getProductDetailsFailure,
 	searchedProduct,
 	filteredProduct,
+	createProductsOrder,
 } = productsSlice.actions

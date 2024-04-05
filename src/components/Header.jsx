@@ -43,7 +43,7 @@ function Header() {
 									src={payBox}
 									alt='pay box'
 									onClick={() => dispatch(handelClicker())}
-									className='w-5 h-5'
+									className='w-5 h-5 cursor-pointer'
 								/>
 							</li>
 						)}
@@ -86,7 +86,7 @@ function Header() {
 							src={payBox}
 							alt='pay box'
 							onClick={() => dispatch(handelClicker())}
-							className='w-5 h-5'
+							className='w-5 h-5 cursor-pointer'
 						/>
 					)}
 
