@@ -4,6 +4,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Link } from 'react-router-dom'
 import { handelClicker } from '../app/features/state/shopingSlice'
 import closeMenu from '../assets/svg/close-menu.svg'
+import emptyBasket from '../assets/icons/empty-basket.png'
 import { MdDelete } from 'react-icons/md'
 import BasketsService from '../service/basket'
 import {
@@ -20,8 +21,6 @@ export default function AddToCart() {
 		state => state.baskets
 	)
 	const { orderProducts } = useSelector(state => state.products)
-	// console.log(orderProducts)
-
 	const dispatch = useDispatch()
 
 	// get basket
@@ -184,56 +183,64 @@ export default function AddToCart() {
 																</li>
 															))
 														)}
-														{/* {baskets.length === 0 && orderProducts !== null && (
-															<div className='py-5 w-full flex items-center justify-center'>
-																<p className='font-medium text-gray-500'>
-																	{orderProducts}
-																</p>
+
+														{orderProducts?.message && baskets.length === 0 && (
+															<div>
+																<div className='bg-white p-6  md:mx-auto'>
+																	<svg
+																		viewBox='0 0 24 24'
+																		className='text-green-600 w-16 h-16 mx-auto my-6'
+																	>
+																		<path
+																			fill='currentColor'
+																			d='M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z'
+																		/>
+																	</svg>
+																	<div className='text-center'>
+																		<h3 className='md:text-2xl text-base text-gray-900 font-semibold text-center'>
+																			Buyurtma qabul qilindi!
+																		</h3>
+																		<p className='text-gray-600 my-2'>
+																			{orderProducts?.message}
+																		</p>
+																	</div>
+																</div>
 															</div>
-														)} */}
-														{
-															orderProducts.error_message && <div class="bg-gray-100 h-screen">
-															<div class="bg-white p-6  md:mx-auto">
-															  <svg viewBox="0 0 24 24" class="text-green-600 w-16 h-16 mx-auto my-6">
-																  <path fill="currentColor"
-																	  d="M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z">
-																  </path>
-															  </svg>
-															  <div class="text-center">
-																  <h3 class="md:text-2xl text-base text-gray-900 font-semibold text-center">Payment Done!</h3>
-																  <p class="text-gray-600 my-2">Thank you for completing your secure online payment.</p>
-																  <p> Have a great day!  </p>
-																  <div class="py-10 text-center">
-																	  <a href="#" class="px-12 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3">
-																		  GO BACK 
-																	 </a>
-																  </div>
-															  </div>
-														  </div>
-														</div>
-														}
+														)}
+														{/* {
+															!orderProducts?.message(
+																<div className='flex justify-center'>
+																	<div className='bg-white p-6  md:mx-auto'>
+																		<img src={emptyBasket} alt='empty basket' />
+																	</div>
+																</div>
+															)
+														} */}
 													</ul>
 												</div>
 											</div>
 										</div>
 
 										<div className='border-t border-gray-200 px-4 py-6 sm:px-6'>
-											<div className='flex justify-between text-base font-medium text-gray-900'>
-												<p>Umumiy narxi</p>
-												<p>{totalPrice()} so'm</p>
-											</div>
-											<div className='mt-6'>
-												<button
-													type='submit'
-													className='w-full flex items-center justify-center rounded-md border border-transparent bg-orange-400 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-orange-300'
-													onClick={createProductOrder}
-												>
-													Sotib olish
-												</button>
-											</div>
+											{baskets && baskets.length > 0 && (
+												<>
+													<div className='flex justify-between text-base font-medium text-gray-900'>
+														<p>Umumiy narxi</p>
+														<p>{totalPrice()} so'm</p>
+													</div>
+													<div className='mt-6'>
+														<button
+															type='submit'
+															className='w-full flex items-center justify-center rounded-md border border-transparent bg-orange-400 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-orange-300'
+															onClick={createProductOrder}
+														>
+															Sotib olish
+														</button>
+													</div>
+												</>
+											)}
 											<div className='mt-6 flex justify-center text-center text-sm text-gray-500'>
 												<p>
-													yoki
 													<Link
 														to='/'
 														type='button'
